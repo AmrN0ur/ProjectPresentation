@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خارطة الطريق التقنية - Buildaxis | DeltaBase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --accent: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background-color: var(--slate-50);
+            color: var(--slate-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .font-outfit { font-family: 'Outfit', sans-serif; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-node {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .step-node:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .connector-line {
+            width: 3px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .connector-line::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--accent);
+        }
+
+        .animate-in {
+            animation: slideUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100/40 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-100/40 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-6 py-12 md:py-20 lg:py-24">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-16 md:mb-24 animate-in" style="animation-delay: 0.1s">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-bold mb-6 border border-blue-100">
+                <i data-lucide="zap" class="w-4 h-4 badge-pulse text-emerald-500"></i>
+                <span>عرض تقني حصري لـ Buildaxis</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                خارطة الطريق لمستقبل <br/> 
+                <span class="gradient-text">إدارة المشاريع الذكية</span>
+            </h1>
+            <p class="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-light">
+                نظام Buildaxis ليس مجرد أداة لإدخال البيانات، بل هو محرك استراتيجي يحلل المخاطر، يضمن الحوكمة، ويتنبأ بمستقبل المشروع بدقة متناهية.
+            </p>
+        </header>
+
+        <!-- Main Journey -->
+        <div class="relative space-y-0">
+            
+            <!-- Step 1: Input -->
+            <div class="step-node glass-card p-8 rounded-[2rem] border-slate-200 animate-in" style="animation-delay: 0.2s">
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                        <i data-lucide="database" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold">1. مرونة مدخلات الـ BOQ</h3>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Input Layer</span>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed">تعددت الطرق والدقة واحدة. يوفر النظام خيارات إدخال مرنة تضمن راحة الاستشاري وسرعة المقاول.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 bg-white/50 rounded-xl border border-blue-50/50 hover:border-blue-200 transition-colors">
+                                <span class="flex items-center gap-2 text-blue-700 font-bold mb-1">
+                                    <i data-lucide="monitor" class="w-4 h-4"></i> الإدخال المباشر
+                                </span>
+                                <p class="text-xs text-slate-500 leading-relaxed italic">تعبئة البيانات بشكل مباشر داخل واجهة النظام ثم يقوم النظام بملئ القالب لك وتحميله جاهزاً.</p>
+                            </div>
+                            <div class="p-4 bg-white/50 rounded-xl border border-purple-50/50 hover:border-purple-200 transition-colors">
+                                <span class="flex items-center gap-2 text-purple-700 font-bold mb-1">
+                                    <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> الطريقة التقليدية
+                                </span>
+                                <p class="text-xs text-slate-500 leading-relaxed italic">تحميل قالب Excel الموحد من النظام، ثم ملئه، ثم إعادة رفعه ليقوم النظام بتحليله.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connector-line"></div>
+
+            <!-- Step 2: Verification -->
+            <div class="step-node glass-card p-8 rounded-[2rem] border-emerald-100 animate-in" style="animation-delay: 0.3s">
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold">2. مصفاة البيانات والتحقق المحصن</h3>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 text-center font-outfit">Security & Stability</span>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed">وداعاً للأخطاء الفنية. يقوم النظام بعمل فحص صارم للبنود، الكميات، وحتى مسميات الأعمدة لضمان استقرار قاعدة البيانات.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Column Match (الكمية vs الكميه)</span>
+                            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Data Type Validation</span>
+                            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Zero-Error Injection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connector-line"></div>
+
+            <!-- Step 3: Predictive Engine -->
+            <div class="step-node bg-slate-900 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden animate-in" style="animation-delay: 0.4s">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full"></div>
+                <div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
+                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-orange-900/40">
+                        <i data-lucide="cpu" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-1 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold text-white">3. محرك الـ CPI المطور والذكاء التحليلي</h3>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 font-outfit">Core Logic Agent</span>
+                        </div>
+                        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 space-y-4">
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                ربط الأداء المالي <span class="text-orange-400 font-bold">(CPI)</span> بمعدل التقدم الزمني الحقيقي <span class="text-blue-400 font-bold">(Elapsed Time)</span>.
+                            </p>
+                            <div class="h-px bg-white/10 w-full"></div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div class="space-y-1">
+                                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">التكلفة الفعلية</div>
+                                    <div class="text-white font-outfit font-bold">AC</div>
+                                </div>
+                                <div class="flex items-center justify-center text-slate-600">
+                                    <i data-lucide="arrow-right-left" class="w-4 h-4"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">التقدم الزمني</div>
+                                    <div class="text-white font-outfit font-bold">50% Elapsed</div>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-[10px] text-orange-400 font-bold uppercase tracking-tighter">مؤشر الأداء</div>
+                                    <div class="text-orange-400 font-outfit font-bold">CPI 2.0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connector-line"></div>
+
+            <!-- Step 4: Insight Layer -->
+            <div class="step-node glass-card p-8 rounded-[2rem] border-slate-200 animate-in" style="animation-delay: 0.5s">
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-purple-200">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold">4. طبقة البصيرة الاستراتيجية (Insights)</h3>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Decision Support</span>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed">تحويل الأرقام الصماء إلى قرارات سيادية. إليك ما سيراه العميل أحمد في لوحة القيادة:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                                <i data-lucide="alert-circle" class="w-4 h-4 text-rose-500"></i>
+                                <span class="text-xs font-bold text-slate-700 leading-tight">التعرض المالي (VaR)</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                                <i data-lucide="clock" class="w-4 h-4 text-blue-500"></i>
+                                <span class="text-xs font-bold text-slate-700 leading-tight">المهلة قبل التعثر</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                                <i data-lucide="lock" class="w-4 h-4 text-amber-500"></i>
+                                <span class="text-xs font-bold text-slate-700 leading-tight">التجميد الإجرائي (Lock)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="connector-line"></div>
+
+            <!-- Step 5: Output -->
+            <div class="step-node glass-card p-8 rounded-[2rem] border-blue-100 bg-blue-50/10 animate-in" style="animation-delay: 0.6s">
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                        <i data-lucide="check-circle" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold">5. مخرجات رسمية متكاملة</h3>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Final Output</span>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed">توليد ملفات متوافقة مع القالب الأصلي وجاهزة للاستخدام الإداري والقانوني.</p>
+                        <div class="flex gap-4">
+                            <button class="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">
+                                <i data-lucide="file-text" class="w-4 h-4"></i> تصدير PDF
+                            </button>
+                            <button class="flex items-center gap-2 px-5 py-2.5 bg-white text-slate-700 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition-all">
+                                <i data-lucide="table" class="w-4 h-4"></i> تصدير Excel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="mt-24 md:mt-32 pt-12 border-t border-slate-200 text-center space-y-8 animate-in" style="animation-delay: 0.7s">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center w-full">
+                    <h4 class="text-xl font-bold text-slate-800">DeltaBase <span class="text-blue-600">Software</span></h4>
+                    <p class="text-slate-400 text-sm">نحن لا نطور برامجاً، بل نصنع تجارب ذكية.</p>
+                </div>
+            </div>
+            
+            <div class="bg-blue-600/5 p-6 rounded-2xl border border-blue-600/10 inline-block w-full">
+                <p class="text-blue-700 text-sm font-bold flex items-center justify-center gap-2">
+                    <i data-lucide="info" class="w-4 h-4"></i>
+                    سيتم تزويد العميل بعقد رسمي يضمن كافة معايير الجودة والأداء المذكورة أعلاه.
+                </p>
+            </div>
+            
+            <p class="text-slate-400 text-xs py-8">© 2026 Buildaxis | جميع الحقوق محفوظة لفريق DeltaBase</p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Reveal animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.step-node').forEach(node => {
+            observer.observe(node);
+        });
+    </script>
+</body>
+</html>
