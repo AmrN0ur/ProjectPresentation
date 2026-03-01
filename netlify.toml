@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+  
+[[redirects]]
+  from = "/*"
+  to = "/مخطط_سير_العمل.html"
+  status = 404
