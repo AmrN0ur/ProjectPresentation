@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>خارطة الطريق التقنية - Buildaxis | DeltaBase</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
@@ -30,7 +33,9 @@
             overflow-x: hidden;
         }
 
-        .font-outfit { font-family: 'Outfit', sans-serif; }
+        .font-outfit {
+            font-family: 'Outfit', sans-serif;
+        }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.8);
@@ -73,8 +78,15 @@
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .gradient-text {
@@ -88,64 +100,84 @@
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
         }
     </style>
 </head>
+
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900">
 
     <!-- Background Decoration -->
     <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100/40 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-100/40 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-100/40 rounded-full blur-[120px]">
+        </div>
     </div>
 
     <div class="max-w-5xl mx-auto px-6 py-12 md:py-20 lg:py-24">
-        
+
         <!-- Header Section -->
         <header class="text-center mb-16 md:mb-24 animate-in" style="animation-delay: 0.1s">
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-bold mb-6 border border-blue-100">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-bold mb-6 border border-blue-100">
                 <i data-lucide="zap" class="w-4 h-4 badge-pulse text-emerald-500"></i>
                 <span>عرض تقني حصري لـ Buildaxis</span>
             </div>
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                خارطة الطريق لمستقبل <br/> 
+                خارطة الطريق لمستقبل <br />
                 <span class="gradient-text">إدارة المشاريع الذكية</span>
             </h1>
             <p class="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto font-light">
-                نظام Buildaxis ليس مجرد أداة لإدخال البيانات، بل هو محرك استراتيجي يحلل المخاطر، يضمن الحوكمة، ويتنبأ بمستقبل المشروع بدقة متناهية.
+                نظام Buildaxis ليس مجرد أداة لإدخال البيانات، بل هو محرك استراتيجي يحلل المخاطر، يضمن الحوكمة، ويتنبأ
+                بمستقبل المشروع بدقة متناهية.
             </p>
         </header>
 
         <!-- Main Journey -->
         <div class="relative space-y-0">
-            
+
             <!-- Step 1: Input -->
-            <div class="step-node glass-card p-8 rounded-[2rem] border-slate-200 animate-in" style="animation-delay: 0.2s">
+            <div class="step-node glass-card p-8 rounded-[2rem] border-slate-200 animate-in"
+                style="animation-delay: 0.2s">
                 <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                    <div
+                        class="shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
                         <i data-lucide="database" class="w-8 h-8"></i>
                     </div>
                     <div class="flex-1 space-y-4">
                         <div class="flex items-center justify-between">
                             <h3 class="text-2xl font-bold">1. مرونة مدخلات الـ BOQ</h3>
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Input Layer</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Input
+                                Layer</span>
                         </div>
-                        <p class="text-slate-600 leading-relaxed">تعددت الطرق والدقة واحدة. يوفر النظام خيارات إدخال مرنة تضمن راحة الاستشاري وسرعة المقاول.</p>
+                        <p class="text-slate-600 leading-relaxed">تعددت الطرق والدقة واحدة. يوفر النظام خيارات إدخال
+                            مرنة تضمن راحة الاستشاري وسرعة المقاول.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                            <div class="p-4 bg-white/50 rounded-xl border border-blue-50/50 hover:border-blue-200 transition-colors">
+                            <div
+                                class="p-4 bg-white/50 rounded-xl border border-blue-50/50 hover:border-blue-200 transition-colors">
                                 <span class="flex items-center gap-2 text-blue-700 font-bold mb-1">
                                     <i data-lucide="monitor" class="w-4 h-4"></i> الإدخال المباشر
                                 </span>
-                                <p class="text-xs text-slate-500 leading-relaxed italic">تعبئة البيانات بشكل مباشر داخل واجهة النظام ثم يقوم النظام بملئ القالب لك وتحميله جاهزاً.</p>
+                                <p class="text-xs text-slate-500 leading-relaxed italic">تعبئة البيانات بشكل مباشر داخل
+                                    واجهة النظام ثم يقوم النظام بملئ القالب لك وتحميله جاهزاً.</p>
                             </div>
-                            <div class="p-4 bg-white/50 rounded-xl border border-purple-50/50 hover:border-purple-200 transition-colors">
+                            <div
+                                class="p-4 bg-white/50 rounded-xl border border-purple-50/50 hover:border-purple-200 transition-colors">
                                 <span class="flex items-center gap-2 text-purple-700 font-bold mb-1">
                                     <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> الطريقة التقليدية
                                 </span>
-                                <p class="text-xs text-slate-500 leading-relaxed italic">تحميل قالب Excel الموحد من النظام، ثم ملئه، ثم إعادة رفعه ليقوم النظام بتحليله.</p>
+                                <p class="text-xs text-slate-500 leading-relaxed italic">تحميل قالب Excel الموحد من
+                                    النظام، ثم ملئه، ثم إعادة رفعه ليقوم النظام بتحليله.</p>
                             </div>
                         </div>
                     </div>
@@ -155,21 +187,32 @@
             <div class="connector-line"></div>
 
             <!-- Step 2: Verification -->
-            <div class="step-node glass-card p-8 rounded-[2rem] border-emerald-100 animate-in" style="animation-delay: 0.3s">
+            <div class="step-node glass-card p-8 rounded-[2rem] border-emerald-100 animate-in"
+                style="animation-delay: 0.3s">
                 <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                    <div
+                        class="shrink-0 w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
                         <i data-lucide="shield-check" class="w-8 h-8"></i>
                     </div>
                     <div class="flex-1 space-y-4">
                         <div class="flex items-center justify-between">
                             <h3 class="text-2xl font-bold">2. مصفاة البيانات والتحقق المحصن</h3>
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 text-center font-outfit">Security & Stability</span>
+                            <span
+                                class="text-xs font-bold uppercase tracking-wider text-slate-400 text-center font-outfit">Security
+                                & Stability</span>
                         </div>
-                        <p class="text-slate-600 leading-relaxed">وداعاً للأخطاء الفنية. يقوم النظام بعمل فحص صارم للبنود، الكميات، وحتى مسميات الأعمدة لضمان استقرار قاعدة البيانات.</p>
+                        <p class="text-slate-600 leading-relaxed">يقوم النظام بعمل فحص صارم للبنود، الكميات، وحتى مسميات
+                            الأعمدة لضمان استقرار قاعدة البيانات.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Column Match (الكمية vs الكميه)</span>
-                            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Data Type Validation</span>
-                            <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Zero-Error Injection</span>
+                            <span
+                                class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Column
+                                Match (الكمية vs الكميه)</span>
+                            <span
+                                class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Data
+                                Type Validation</span>
+                            <span
+                                class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-bold border border-emerald-100">Zero-Error
+                                Injection</span>
                         </div>
                     </div>
                 </div>
@@ -177,41 +220,115 @@
 
             <div class="connector-line"></div>
 
-            <!-- Step 3: Predictive Engine -->
-            <div class="step-node bg-slate-900 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden animate-in" style="animation-delay: 0.4s">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full"></div>
+            <!-- Step 3: EVM Engine -->
+            <div class="step-node bg-slate-900 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden animate-in"
+                style="animation-delay: 0.4s">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full"></div>
                 <div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
-                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-orange-900/40">
+                    <div
+                        class="shrink-0 w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-orange-900/40">
                         <i data-lucide="cpu" class="w-8 h-8"></i>
                     </div>
                     <div class="flex-1 space-y-6">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-2xl font-bold text-white">3. محرك الـ CPI المطور والذكاء التحليلي</h3>
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 font-outfit">Core Logic Agent</span>
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                            <h3 class="text-2xl font-bold text-white">3. مِحرك إدارة القيمة المكتسبة (EVM Engine)</h3>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 font-outfit">Core
+                                Logic Agent</span>
                         </div>
-                        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 space-y-4">
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                ربط الأداء المالي <span class="text-orange-400 font-bold">(CPI)</span> بمعدل التقدم الزمني الحقيقي <span class="text-blue-400 font-bold">(Elapsed Time)</span>.
-                            </p>
-                            <div class="h-px bg-white/10 w-full"></div>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                                <div class="space-y-1">
-                                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">التكلفة الفعلية</div>
-                                    <div class="text-white font-outfit font-bold">AC</div>
+
+                        <p class="text-slate-300 text-xs">
+                            كل ذلك يتم حسابة على مستوى البند الواحد وعلى مستوى المشروع ككل:
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- EV -->
+                            <div
+                                class="p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-orange-400 font-bold font-outfit">EV</span>
+                                    <span
+                                        class="text-[10px] bg-orange-400/20 text-orange-400 px-2 py-0.5 rounded uppercase">Earned
+                                        Value</span>
                                 </div>
-                                <div class="flex items-center justify-center text-slate-600">
-                                    <i data-lucide="arrow-right-left" class="w-4 h-4"></i>
+                                <p class="text-slate-300 text-xs">نأتى بالتكلفة المخطط لها لى ال Item المخطط لها من
+                                    الاستشارى<br>ونضربها فى نسبة التنفيذ (Completion Percentage) التى تم اخذها من
+                                    المقاول</p>
+                            </div>
+                            <!-- CV -->
+                            <div
+                                class="p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-blue-400 font-bold font-outfit">CV</span>
+                                    <span
+                                        class="text-[10px] bg-blue-400/20 text-blue-400 px-2 py-0.5 rounded uppercase">Cost
+                                        Variance</span>
                                 </div>
-                                <div class="space-y-1">
-                                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">التقدم الزمني</div>
-                                    <div class="text-white font-outfit font-bold">50% Elapsed</div>
+                                <p class="text-slate-300 text-xs">نحسب ال EV ثم يطرح منه ال AC</p>
+                            </div>
+                            <!-- CPI -->
+                            <div
+                                class="p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-emerald-400 font-bold font-outfit">CPI</span>
+                                    <span
+                                        class="text-[10px] bg-emerald-400/20 text-emerald-400 px-2 py-0.5 rounded uppercase">Cost
+                                        Index</span>
                                 </div>
-                                <div class="space-y-1">
-                                    <div class="text-[10px] text-orange-400 font-bold uppercase tracking-tighter">مؤشر الأداء</div>
-                                    <div class="text-orange-400 font-outfit font-bold">CPI 2.0</div>
+                                <p class="text-slate-300 text-xs">نحسب ال EV ثم نقسمه على ال AC</p>
+                            </div>
+                            <!-- Time PC -->
+                            <div
+                                class="p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-purple-400 font-bold font-outfit">T/PC%</span>
+                                    <span
+                                        class="text-[10px] bg-purple-400/20 text-purple-400 px-2 py-0.5 rounded uppercase max-w-min"
+                                        dir="ltr">Planed Completion Percentage</span>
                                 </div>
+                                <p class="text-slate-300 text-xs">نأتى بالايام المجتازه من المهمة ثم نقسمها على المدة
+                                    المخطط لها للمهمة ثم تحسب النسبة المئوية</p>
+                                <br>
+                                <p class="text-slate-200 text-xs">وجدنا طريقة افضل لحساب الجزئية دى وهى طريقة الوزن
+                                    النسبى ولكنها مازالت تحت النقاش</p>
+                            </div>
+                            <!-- PV -->
+                            <div
+                                class="p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-amber-400 font-bold font-outfit">PV</span>
+                                    <span
+                                        class="text-[10px] bg-amber-400/20 text-amber-400 px-2 py-0.5 rounded uppercase">Planned
+                                        Value</span>
+                                </div>
+                                <p class="text-slate-300 text-xs"> نأتى بالتكلفة المخطط لها ثم نضربها فى ال Planned
+                                    Completion Percentage </p>
+                            </div>
+                            <!-- SPI -->
+                            <div
+                                class="p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-cyan-400 font-bold font-outfit">SPI</span>
+                                    <span
+                                        class="text-[10px] bg-cyan-400/20 text-cyan-400 px-2 py-0.5 rounded uppercase">Schedule
+                                        Index</span>
+                                </div>
+                                <p class="text-slate-300 text-xs">نحسب ال EV ثم نقسمها على ال PV</p>
+                            </div>
+                            <!-- EAC -->
+                            <div
+                                class="p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all md:col-span-2">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-white font-bold font-outfit text-lg">EAC</span>
+                                    <span
+                                        class="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded uppercase font-bold max-w-min">Estimate
+                                        at Completion</span>
+                                </div>
+                                <p class="text-slate-300 text-sm italic"> نأتى بال PC ثم نقسمها على ال CPI </p>
                             </div>
                         </div>
+
+                        <p class="text-slate-500 text-[12px] text-center italic border-t border-white/5 pt-4">
+                            يتم تحديث هذه البيانات عند رفع تقارير المهام من المقاول ويتم مراجعتها من قبل الاستشارى </p>
                     </div>
                 </div>
             </div>
@@ -219,30 +336,39 @@
             <div class="connector-line"></div>
 
             <!-- Step 4: Insight Layer -->
-            <div class="step-node glass-card p-8 rounded-[2rem] border-slate-200 animate-in" style="animation-delay: 0.5s">
+            <div class="step-node glass-card p-8 rounded-[2rem] border-slate-200 animate-in"
+                style="animation-delay: 0.5s">
                 <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-purple-200">
+                    <div
+                        class="shrink-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-purple-200">
                         <i data-lucide="trending-up" class="w-8 h-8"></i>
                     </div>
                     <div class="flex-1 space-y-4">
                         <div class="flex items-center justify-between">
                             <h3 class="text-2xl font-bold">4. طبقة البصيرة الاستراتيجية (Insights)</h3>
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Decision Support</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Decision
+                                Support</span>
                         </div>
-                        <p class="text-slate-600 leading-relaxed">تحويل الأرقام الصماء إلى قرارات سيادية. إليك ما سيراه العميل أحمد في لوحة القيادة:</p>
+                        <p class="text-slate-600 leading-relaxed">يتم عرض كل التفاصيل التى تم الحصول عليها من فحص
+                            الملفات مثل:</p>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                                <i data-lucide="calculator" class="w-4 h-4 text-amber-500"></i>
+                                <span class="text-xs font-bold text-slate-700 leading-tight">التكلفة التقديرية عند
+                                    الانتهاء
+                                    (EAC)</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
                                 <i data-lucide="alert-circle" class="w-4 h-4 text-rose-500"></i>
-                                <span class="text-xs font-bold text-slate-700 leading-tight">التعرض المالي (VaR)</span>
+                                <span class="text-xs font-bold text-slate-700 leading-tight">مؤشر اداء التكلفة
+                                    (CPI)</span>
                             </div>
                             <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
                                 <i data-lucide="clock" class="w-4 h-4 text-blue-500"></i>
-                                <span class="text-xs font-bold text-slate-700 leading-tight">المهلة قبل التعثر</span>
+                                <span class="text-xs font-bold text-slate-700 leading-tight">مؤشر اداء الجدول الزمني
+                                    (SPI)</span>
                             </div>
-                            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                <i data-lucide="lock" class="w-4 h-4 text-amber-500"></i>
-                                <span class="text-xs font-bold text-slate-700 leading-tight">التجميد الإجرائي (Lock)</span>
-                            </div>
+                            الخ...
                         </div>
                     </div>
                 </div>
@@ -251,22 +377,28 @@
             <div class="connector-line"></div>
 
             <!-- Step 5: Output -->
-            <div class="step-node glass-card p-8 rounded-[2rem] border-blue-100 bg-blue-50/10 animate-in" style="animation-delay: 0.6s">
+            <div class="step-node glass-card p-8 rounded-[2rem] border-blue-100 bg-blue-50/10 animate-in"
+                style="animation-delay: 0.6s">
                 <div class="flex flex-col md:flex-row gap-8 items-start">
-                    <div class="shrink-0 w-16 h-16 bg-gradient-to-br from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                    <div
+                        class="shrink-0 w-16 h-16 bg-gradient-to-br from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
                         <i data-lucide="check-circle" class="w-8 h-8"></i>
                     </div>
                     <div class="flex-1 space-y-4">
                         <div class="flex items-center justify-between">
                             <h3 class="text-2xl font-bold">5. مخرجات رسمية متكاملة</h3>
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Final Output</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 font-outfit">Final
+                                Output</span>
                         </div>
-                        <p class="text-slate-600 leading-relaxed">توليد ملفات متوافقة مع القالب الأصلي وجاهزة للاستخدام الإداري والقانوني.</p>
+                        <p class="text-slate-600 leading-relaxed">توليد ملفات متوافقة مع القالب الأصلي وجاهزة للاستخدام
+                            الإداري والقانوني.</p>
                         <div class="flex gap-4">
-                            <button class="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">
+                            <button
+                                class="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all">
                                 <i data-lucide="file-text" class="w-4 h-4"></i> تصدير PDF
                             </button>
-                            <button class="flex items-center gap-2 px-5 py-2.5 bg-white text-slate-700 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition-all">
+                            <button
+                                class="flex items-center gap-2 px-5 py-2.5 bg-white text-slate-700 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition-all">
                                 <i data-lucide="table" class="w-4 h-4"></i> تصدير Excel
                             </button>
                         </div>
@@ -277,21 +409,24 @@
         </div>
 
         <!-- Footer Section -->
-        <footer class="mt-24 md:mt-32 pt-12 border-t border-slate-200 text-center space-y-8 animate-in" style="animation-delay: 0.7s">
+        <footer class="mt-24 md:mt-32 pt-12 border-t border-slate-200 text-center space-y-8 animate-in"
+            style="animation-delay: 0.7s">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="text-center w-full">
-                    <h4 class="text-xl font-bold text-slate-800">DeltaBase <span class="text-blue-600">Software</span></h4>
+                    <h4 class="text-xl font-bold text-slate-800">DeltaBase <span class="text-blue-600">Software</span>
+                    </h4>
                     <p class="text-slate-400 text-sm">نحن لا نطور برامجاً، بل نصنع تجارب ذكية.</p>
                 </div>
             </div>
-            
+
             <div class="bg-blue-600/5 p-6 rounded-2xl border border-blue-600/10 inline-block w-full">
-                <p class="text-blue-700 text-sm font-bold flex items-center justify-center gap-2">
-                    <i data-lucide="info" class="w-4 h-4"></i>
-                    سيتم تزويد العميل بعقد رسمي يضمن كافة معايير الجودة والأداء المذكورة أعلاه.
+                <p class="text-blue-700 text-sm font-bold flex flex-col sm:flex-row items-center justify-center gap-2">
+                    <i data-lucide="info" class="w-4 h-4 sm:w-8 sm:h-8"></i>
+                    هذا وصف لميزة معينة كان يعمل الفريق على فهمها بكفائة ودقة عالية لانها هى الاساس القائم علية المشروع,
+                    وسيتم تزود العميل بعقد رسمى يضمن كافة معايير الجودة والاداء وتفاصيل المشروع والتنفيذ بالكامل
                 </p>
             </div>
-            
+
             <p class="text-slate-400 text-xs py-8">© 2026 Buildaxis | جميع الحقوق محفوظة لفريق DeltaBase</p>
         </footer>
 
@@ -316,4 +451,5 @@
         });
     </script>
 </body>
+
 </html>
