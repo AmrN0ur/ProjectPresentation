@@ -9,7 +9,7 @@
       "roadmap": "presentations/Buildaxis/roadmap.html",
       "tags": ["إدارة المشاريع", "مقاولات", "برمجة"],
       "createdAt": "2025-01-15",
-      "status": "active"
+      "status": "pending"
     },
     {
       "id": "CanteenSystem",
@@ -20,7 +20,7 @@
       "roadmap": null,
       "tags": ["إدارة المخزون", "الفروع", "الكانتين", "تحصيل مالي"],
       "createdAt": "2025-03-30",
-      "status": "active"
+      "status": "pending"
     }
   ],
   "config": {
