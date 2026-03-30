@@ -55,9 +55,23 @@ mkdir presentations/YourProjectName
 | `roadmap` | مسار خارطة الطريق (اختياري) | `"presentations/.../roadmap.html"` أو `null` |
 | `tags` | مصفوفة التصنيفات | `["إدارة", "تعليم"]` |
 | `createdAt` | تاريخ الإنشاء | `"2025-03-30"` |
-| `status` | الحالة: `active` أو `draft` | `"active"` |
+| `status` | الحالة: `active` أو `draft` أو `pending` | `"active"` |
 
-### 4. تحديث `netlify.toml`
+## بناء Tailwind CSS للإنتاج
+
+قبل رفع المشروع على Netlify، تأكد من بناء CSS:
+
+```bash
+# تثبيت dependencies
+npm install
+
+# بناء CSS للإنتاج
+npm run build:css
+```
+
+هذا سيولد ملف `dist/output.css` المستخدم في الصفحة الرئيسية.
+
+## تحديث `netlify.toml`
 
 أضف قاعدة توجيه للعرض الجديد:
 

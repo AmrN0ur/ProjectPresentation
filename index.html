@@ -15,7 +15,7 @@
     <meta property="og:image" content="DeltaBase_Logo.png" />
 
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="dist/output.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -207,7 +207,7 @@
                         ${p.tags.map(tag => `<span class="text-[10px] bg-white/5 text-slate-400 px-2 py-1 rounded-md border border-white/5">${tag}</span>`).join('')}
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-3 mt-auto">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-auto">
                         <a href="${p.path}" class="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl text-sm font-bold transition-all">
                             <i data-lucide="external-link" class="w-4 h-4"></i>
                             فتح العرض

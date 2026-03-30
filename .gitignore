@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Source files (only needed for building)
+src/
+
+# Build config (keep only if you need to rebuild)
+# Uncomment below if you want a pure production repo with no build capability
+# postcss.config.js
+# tailwind.config.js
+# package.json
+# package-lock.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
