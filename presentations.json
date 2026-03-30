@@ -1,0 +1,32 @@
+{
+  "presentations": [
+    {
+      "id": "Buildaxis",
+      "title": "مشروع Buildaxis",
+      "description": "العرض التنفيذي لمشروع Buildaxis - نظام إدارة المشاريع والمقاولات",
+      "thumbnail": "DeltaBase_Logo.png",
+      "path": "presentations/Buildaxis/index.html",
+      "roadmap": "presentations/Buildaxis/roadmap.html",
+      "tags": ["إدارة المشاريع", "مقاولات", "برمجة"],
+      "createdAt": "2025-01-15",
+      "status": "active"
+    },
+    {
+      "id": "CanteenSystem",
+      "title": "نظام إدارة الكانتين والفروع",
+      "description": "نظام ويب متكامل لإدارة المخزون الرئيسي والفروع، ومتابعة توزيع البضائع، وتحصيل الأموال، ومراقبة الأداء المالي لكل فرع بشكل واضح ومنظم.",
+      "thumbnail": "DeltaBase_Logo.png",
+      "path": "presentations/CanteenSystem/index.html",
+      "roadmap": null,
+      "tags": ["إدارة المخزون", "الفروع", "الكانتين", "تحصيل مالي"],
+      "createdAt": "2025-03-30",
+      "status": "active"
+    }
+  ],
+  "config": {
+    "siteName": "DeltaBase Presentations",
+    "siteDescription": "منصة العروض التقديمية لـ DeltaBase",
+    "logo": "DeltaBase_Logo.png",
+    "favicon": "DeltaBase_Logo.ico"
+  }
+}

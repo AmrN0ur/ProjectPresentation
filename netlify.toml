@@ -1,7 +1,29 @@
 [build]
   publish = "."
-  
+
+# Redirect presentation paths to their folders (without trailing slash)
+[[redirects]]
+  from = "/Buildaxis"
+  to = "/presentations/Buildaxis/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/Buildaxis/*"
+  to = "/presentations/Buildaxis/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/CanteenSystem"
+  to = "/presentations/CanteenSystem/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/CanteenSystem/*"
+  to = "/presentations/CanteenSystem/:splat"
+  status = 200
+
+# 404 fallback
 [[redirects]]
   from = "/*"
-  to = "/مخطط_سير_العمل.html"
+  to = "/index.html"
   status = 404

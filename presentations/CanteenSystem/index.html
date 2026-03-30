@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام إدارة الكانتين والفروع | DeltaBase</title>
+    <meta
+      name="description"
+      content="نظام إدارة الكانتين والفروع - DeltaBase Software Team"
+    />
+    <meta
+      name="keywords"
+      content="Canteen System, Branch Management, DeltaBase, Laravel, Vue"
+    />
+    <meta name="author" content="DeltaBase" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="نظام إدارة الكانتين والفروع | DeltaBase"
+    />
+    <meta
+      property="og:description"
+      content="نظام ويب متكامل لإدارة المخزون الرئيسي والفروع"
+    />
+    <meta property="og:image" content="DeltaBase_Logo.png" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="DeltaBase_Logo.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="DeltaBase_Logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --paper: #ffffff;
+        --ink: #0f172a;
+        --muted: #475569;
+        --line: #dbe4ef;
+        --brand: #0f3d87;
+        --brand-strong: #0a2a5d;
+        --teal: #0f766e;
+        --gold: #c58a11;
+        --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "Tajawal", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        overflow-x: hidden;
+        line-height: 1.75;
+      }
+
+      .background-orb {
+        position: fixed;
+        pointer-events: none;
+        z-index: -1;
+        border-radius: 999px;
+        filter: blur(26px);
+        opacity: 0.42;
+        animation: drift 16s ease-in-out infinite alternate;
+      }
+
+      .orb-a {
+        width: 320px;
+        height: 320px;
+        top: -90px;
+        right: -80px;
+        background: linear-gradient(140deg, #b6d9ff, #e6f2ff);
+      }
+
+      .orb-b {
+        width: 260px;
+        height: 260px;
+        bottom: 8%;
+        left: -80px;
+        background: linear-gradient(140deg, #dff6f3, #bde9e2);
+        animation-delay: 1.5s;
+      }
+
+      .orb-c {
+        width: 180px;
+        height: 180px;
+        top: 55%;
+        right: 6%;
+        background: linear-gradient(140deg, #ffefcf, #ffe4ae);
+        animation-duration: 19s;
+      }
+
+      @keyframes drift {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(28px, -22px) scale(1.08);
+        }
+      }
+
+      .container {
+        width: min(1140px, 92vw);
+        margin: 0 auto;
+      }
+
+      .top-strip {
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(15, 61, 135, 0.12);
+        background: linear-gradient(
+          90deg,
+          rgba(15, 61, 135, 0.06),
+          rgba(15, 118, 110, 0.06)
+        );
+        backdrop-filter: blur(6px);
+      }
+
+      .top-strip .inner {
+        display: flex;
+        gap: 14px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Manrope", sans-serif;
+        font-weight: 800;
+        color: var(--brand-strong);
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background-image: url("DeltaBase_Logo.png");
+        background-size: cover;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .meta-pill {
+        border: 1px solid rgba(15, 61, 135, 0.16);
+        background: rgba(255, 255, 255, 0.68);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      .back-link {
+        color: var(--brand);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .back-link:hover {
+        color: var(--teal);
+      }
+
+      .hero {
+        margin: 42px 0 32px;
+        background: linear-gradient(
+          160deg,
+          #112f67 0%,
+          #0f3d87 54%,
+          #0f5f83 100%
+        );
+        color: #f8fbff;
+        border-radius: 28px;
+        padding: clamp(24px, 4vw, 42px);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 12% 22%,
+            rgba(255, 255, 255, 0.16) 0,
+            transparent 36%
+          ),
+          radial-gradient(
+            circle at 86% 78%,
+            rgba(255, 214, 132, 0.22) 0,
+            transparent 42%
+          );
+        pointer-events: none;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.95fr;
+        gap: 20px;
+        position: relative;
+        z-index: 1;
+        align-items: end;
+      }
+
+      .hero h1 {
+        margin: 0 0 14px;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(1.9rem, 4.1vw, 3rem);
+        line-height: 1.24;
+      }
+
+      .hero p {
+        margin: 0 0 12px;
+        color: rgba(241, 248, 255, 0.9);
+        font-size: 1.07rem;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        background: rgba(255, 255, 255, 0.14);
+        padding: 7px 13px;
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+        animation: pulse 2.8s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.22);
+        }
+        75% {
+          box-shadow: 0 0 0 11px rgba(255, 255, 255, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }
+      }
+
+      .hero-note {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 18px;
+        background: rgba(7, 18, 38, 0.28);
+        padding: 14px 16px;
+        font-size: 0.95rem;
+        color: rgba(237, 246, 255, 0.95);
+      }
+
+      .section {
+        margin-top: 32px;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(1.35rem, 2.4vw, 1.95rem);
+        color: var(--brand-strong);
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .scope-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 18px 14px;
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .scope-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 34px rgba(15, 23, 42, 0.11);
+      }
+
+      .scope-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 5px;
+        height: 100%;
+        border-radius: 3px;
+        background: linear-gradient(180deg, var(--brand), var(--teal));
+      }
+
+      .scope-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.06rem;
+        color: #0f2a4e;
+      }
+
+      .scope-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .scope-list li {
+        margin: 7px 0;
+        padding-right: 20px;
+        position: relative;
+        color: #334155;
+        font-size: 0.95rem;
+      }
+
+      .scope-list li::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 8px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(150deg, var(--brand), var(--teal));
+        box-shadow: 0 0 0 3px rgba(15, 61, 135, 0.12);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin: 18px 0 4px;
+      }
+
+      .stat-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 14px 14px 12px;
+        box-shadow: 0 6px 22px rgba(15, 23, 42, 0.06);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--brand),
+          var(--teal),
+          var(--gold)
+        );
+        opacity: 0.92;
+      }
+
+      .stat-title {
+        margin: 0;
+        color: #334155;
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .stat-value {
+        margin-top: 8px;
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        flex-wrap: wrap;
+        font-family: "Manrope", sans-serif;
+        font-weight: 800;
+        color: var(--brand-strong);
+        line-height: 1;
+      }
+
+      .stat-value strong {
+        font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+      }
+
+      .stat-value span {
+        font-size: 0.9rem;
+        color: #334155;
+        font-family: "Tajawal", sans-serif;
+        font-weight: 700;
+      }
+
+      .role-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .role-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 34px rgba(15, 23, 42, 0.11);
+      }
+
+      .role-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.1rem;
+        color: var(--brand);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .role-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      .role-admin {
+        background: #e9f0fb;
+        color: var(--brand);
+      }
+      .role-accountant {
+        background: #e7f8f5;
+        color: var(--teal);
+      }
+
+      .tech-stack {
+        background: linear-gradient(170deg, #fff, #f5f9ff);
+        border: 1px solid #ceddee;
+        border-radius: 20px;
+        padding: 18px;
+        box-shadow: 0 14px 34px rgba(15, 23, 42, 0.09);
+        margin-top: 14px;
+      }
+
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .tech-category h4 {
+        margin: 0 0 8px;
+        font-size: 0.95rem;
+        color: var(--brand-strong);
+      }
+
+      .tech-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tech-list li {
+        margin: 5px 0;
+        padding-right: 16px;
+        position: relative;
+        color: #334155;
+        font-size: 0.9rem;
+      }
+
+      .tech-list li::before {
+        content: "›";
+        position: absolute;
+        right: 0;
+        color: var(--teal);
+        font-weight: 700;
+      }
+
+      .cta {
+        margin: 34px 0 40px;
+        border-radius: 24px;
+        border: 1px solid #d1dfef;
+        background:
+          linear-gradient(
+            130deg,
+            rgba(15, 61, 135, 0.08),
+            rgba(15, 118, 110, 0.08)
+          ),
+          #ffffff;
+        padding: 22px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.64),
+          transparent
+        );
+        transform: translateX(-120%);
+        animation: shimmer 4.8s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-120%);
+        }
+        55% {
+          transform: translateX(120%);
+        }
+        100% {
+          transform: translateX(120%);
+        }
+      }
+
+      .cta h2 {
+        margin: 0 0 6px;
+        position: relative;
+        z-index: 1;
+        color: #0f2f59;
+        font-family: "Manrope", sans-serif;
+      }
+
+      .cta p {
+        margin: 0;
+        position: relative;
+        z-index: 1;
+        color: #334155;
+        font-weight: 600;
+      }
+
+      .contact-box {
+        margin-top: 12px;
+        border-radius: 20px;
+        background: linear-gradient(145deg, #112f67, #0c4d6f);
+        color: #f0f7ff;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        text-align: center;
+      }
+
+      .contact-box h3 {
+        margin: 0 0 10px;
+        font-family: "Manrope", sans-serif;
+        font-size: 1.25rem;
+      }
+
+      .contact-box p {
+        margin: 6px 0;
+        color: #deecff;
+      }
+
+      footer {
+        text-align: center;
+        margin-bottom: 26px;
+        color: #64748b;
+        font-size: 0.9rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.62s ease,
+          transform 0.62s ease;
+      }
+
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1024px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .card-grid,
+        .tech-grid,
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-orb orb-a"></div>
+    <div class="background-orb orb-b"></div>
+    <div class="background-orb orb-c"></div>
+
+    <header class="top-strip">
+      <div class="container inner">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <span>DeltaBase Software</span>
+        </div>
+        <div class="meta">
+          <span class="meta-pill">المشروع: Canteen System</span>
+          <span class="meta-pill">نظام إدارة الكانتين</span>
+          <a href="../../index.html" class="back-link">← العودة للرئيسية</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero reveal">
+        <div class="hero-grid">
+          <div>
+            <span class="hero-badge">نظام إدارة متكامل</span>
+            <h1>
+              نظام إدارة الكانتين والفروع<br />Canteen & Branch Management
+              System
+            </h1>
+            <p>
+              نظام ويب متكامل لإدارة المخزون الرئيسي والفروع، ومتابعة توزيع
+              البضائع، وتحصيل الأموال، ومراقبة الأداء المالي لكل فرع بشكل واضح
+              ومنظم.
+            </p>
+          </div>
+          <div class="hero-note">
+            <strong>فكرة النظام:</strong><br />
+            تنظيم العمل داخل الكانتينات التابعة للفروع المختلفة (الحضانات)، مع
+            إدارة المخزون وتوزيع البضائع ومتابعة التحصيل المالي.
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card reveal">
+          <p class="stat-title">الجهات المستخدمة</p>
+          <div class="stat-value">
+            <strong>2</strong><span>المالك + المحاسب</span>
+          </div>
+        </article>
+        <article class="stat-card reveal">
+          <p class="stat-title">البيئة التقنية</p>
+          <div class="stat-value">
+            <strong>Laravel</strong><span>+ Vue 3</span>
+          </div>
+        </article>
+        <article class="stat-card reveal">
+          <p class="stat-title">مدة الاستضافة</p>
+          <div class="stat-value">
+            <strong>6</strong><span>أشهر مجانية</span>
+          </div>
+        </article>
+        <article class="stat-card reveal">
+          <p class="stat-title">طبيعة النظام</p>
+          <div class="stat-value">
+            <strong>Web</strong><span>Responsive App</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-head reveal">
+          <h2>الأطراف المستخدمة للنظام</h2>
+          <p>كل مستخدم له صلاحيات ووظائف محددة ضمن النظام.</p>
+        </div>
+        <div class="card-grid">
+          <article class="role-card reveal">
+            <h3>
+              <span>المالك (Admin)</span
+              ><span class="role-badge role-admin">مدير النظام</span>
+            </h3>
+            <ul class="scope-list">
+              <li>إدارة النظام بالكامل</li>
+              <li>إضافة المنتجات والبضائع للمخزن الرئيسي</li>
+              <li>إدارة الفروع (الحضانات)</li>
+              <li>متابعة الحسابات والأرباح</li>
+              <li>رؤية الإحصائيات والتقارير</li>
+              <li>تأكيد استلام الأموال من مسئول الحسابات</li>
+            </ul>
+          </article>
+          <article class="role-card reveal">
+            <h3>
+              <span>مسئول الحسابات (Accountant)</span
+              ><span class="role-badge role-accountant">محاسب</span>
+            </h3>
+            <ul class="scope-list">
+              <li>شراء البضائع وإضافتها للمخزن</li>
+              <li>توزيع البضائع على الفروع</li>
+              <li>تحصيل الأموال من الفروع</li>
+              <li>إرسال طلب تسليم الأموال للمالك</li>
+              <li>لا يمكنه رؤية الأرباح (قيود الصلاحيات)</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head reveal">
+          <h2>المخزن الرئيسي والفروع</h2>
+          <p>إدارة المخزون وتوزيع البضائع ومتابعة القيم المالية.</p>
+        </div>
+        <div class="card-grid">
+          <article class="scope-card reveal">
+            <h3>تسجيل المنتجات في المخزن</h3>
+            <ul class="scope-list">
+              <li>اسم المنتج وBarcode (اختياري)</li>
+              <li>عدد القطع داخل العبوة</li>
+              <li>سعر الشراء والبيع للقطعة</li>
+              <li>تسجيل الكميات على هيئة عبوات</li>
+              <li>عرض إجمالي قيمة المخزون</li>
+              <li>عرض صافي الربح المتوقع</li>
+            </ul>
+          </article>
+          <article class="scope-card reveal">
+            <h3>توزيع البضائع على الفروع</h3>
+            <ul class="scope-list">
+              <li>تسليم البضائع للفروع مباشرة</li>
+              <li>تسجيل اسم الفرع والبضائع المسلمة</li>
+              <li>حساب القيمة المالية لكل فرع</li>
+              <li>متابعة الرصيد المتبقي في الفرع</li>
+              <li>الفرع يعامل كقيمة مالية فقط</li>
+              <li>لا يتم عرض تفاصيل الأصناف داخل الفرع</li>
+            </ul>
+          </article>
+          <article class="scope-card reveal">
+            <h3>تحصيل وتحويل الأموال</h3>
+            <ul class="scope-list">
+              <li>تحصيل الأموال من الفروع بشكل دوري</li>
+              <li>تسجيل المبالغ المستلمة من كل فرع</li>
+              <li>تحديث رصيد الفرع تلقائياً</li>
+              <li>إضافة المبلغ إلى حساب المحاسب</li>
+              <li>إرسال طلب تحويل من المحاسب للمالك</li>
+              <li>تأكيد الاستلام من المالك ونقل الرصيد</li>
+            </ul>
+          </article>
+          <article class="scope-card reveal">
+            <h3>نظام الإشعارات</h3>
+            <ul class="scope-list">
+              <li>تسجيل بضاعة جديدة في المخزن الرئيسي</li>
+              <li>تسليم بضاعة إلى أحد الفروع</li>
+              <li>استلام مبلغ من أحد الفروع</li>
+              <li>نجاح تحويل مبلغ من المحاسب للمالك</li>
+              <li>إشعارات فورية للمالك (Admin)</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head reveal">
+          <h2>البيئة التقنية (Tech Stack)</h2>
+          <p>تقنيات حديثة لبناء نظام قوي وسريع وقابل للتطوير.</p>
+        </div>
+        <div class="tech-stack reveal">
+          <div class="tech-grid">
+            <div class="tech-category">
+              <h4>الواجهة الأمامية (Frontend)</h4>
+              <ul class="tech-list">
+                <li>Vite - بناء سريع</li>
+                <li>Vue 3 - إطار العمل</li>
+                <li>Tailwind CSS - تصميم حديث</li>
+                <li>TailAdmin RTL - قالب متجاوب</li>
+              </ul>
+            </div>
+            <div class="tech-category">
+              <h4>الواجهة الخلفية (Backend)</h4>
+              <ul class="tech-list">
+                <li>PHP Laravel - إطار العمل</li>
+                <li>MySQL Database - قاعدة البيانات</li>
+                <li>API RESTful - تواصل آمن</li>
+                <li>Authentication - مصادقة محمية</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head reveal">
+          <h2>الإحصائيات والتقارير</h2>
+          <p>تقارير واضحة تساعد الإدارة على اتخاذ قرارات دقيقة.</p>
+        </div>
+        <div class="card-grid">
+          <article class="scope-card reveal">
+            <h3>إحصائيات الفروع</h3>
+            <ul class="scope-list">
+              <li>القيمة الحالية داخل كل فرع</li>
+              <li>متابعة رصيد الفروع</li>
+              <li>عرض منفصل لكل فرع</li>
+            </ul>
+          </article>
+          <article class="scope-card reveal">
+            <h3>إحصائيات المحاسب</h3>
+            <ul class="scope-list">
+              <li>المبالغ التي تم تحصيلها</li>
+              <li>حساب المحاسب المالي</li>
+              <li>تاريخ التحصيلات</li>
+            </ul>
+          </article>
+          <article class="scope-card reveal">
+            <h3>إحصائيات المالك</h3>
+            <ul class="scope-list">
+              <li>الحساب الخاص بالمالك</li>
+              <li>الأرباح والتحصيلات</li>
+              <li>ملخص الأداء المالي</li>
+            </ul>
+          </article>
+          <article class="scope-card reveal">
+            <h3>الأمان وصلاحيات الدخول</h3>
+            <ul class="scope-list">
+              <li>لكل مستخدم حساب خاص</li>
+              <li>تسجيل دخول آمن</li>
+              <li>تغيير كلمة المرور</li>
+              <li>صلاحيات حسب الدور</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head reveal">
+          <h2>الأجهزة المدعومة والاستضافة</h2>
+          <p>نظام ويب متجاوب يعمل على جميع الأجهزة مع استضافة مجانية.</p>
+        </div>
+        <div class="card-grid">
+          <article class="scope-card reveal">
+            <h3>الأجهزة المدعومة</h3>
+            <ul class="scope-list">
+              <li>الهواتف الذكية (Mobile)</li>
+              <li>الأجهزة اللوحية (Tablet)</li>
+              <li>أجهزة الحاسوب المكتبية</li>
+              <li>واجهة متجاوبة Responsive</li>
+              <li>لا يتطلب تثبيت برامج</li>
+            </ul>
+          </article>
+          <article class="scope-card reveal">
+            <h3>الاستضافة والتشغيل</h3>
+            <ul class="scope-list">
+              <li>خادم VPS تابع لفريق التطوير</li>
+              <li>6 أشهر استضافة مجانية</li>
+              <li>بعدها: مشاركة التكلفة أو نقل النظام</li>
+              <li>إمكانية إعداد خادم داخل مقر العميل</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="contact-box reveal">
+          <h3>فريق التطوير والتواصل</h3>
+          <p><strong>تم التطوير بواسطة:</strong> فريق DeltaBase</p>
+          <p><strong>الدولة:</strong> جمهورية مصر العربية</p>
+          <p><strong>رقم الهاتف:</strong> +20 1557978878</p>
+        </div>
+      </section>
+
+      <section class="cta reveal">
+        <h2>نظام متكامل لإدارة الكانتين والفروع</h2>
+        <p>
+          تم بناء هذا النظام وفق المتطلبات المحددة بدقة، مع التركيز على إدارة
+          المخزون، توزيع البضائع، التحصيل المالي، وتوفير تقارير واضحة للمالك.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Canteen System - إعداد وتقديم فريق DeltaBase لتطوير البرمجيات
+    </footer>
+
+    <script>
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      revealElements.forEach((el, idx) => {
+        el.style.transitionDelay = `${Math.min(idx * 55, 260)}ms`;
+        revealObserver.observe(el);
+      });
+    </script>
+  </body>
+</html>
