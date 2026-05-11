@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuantixPro — نظام إدارة متكامل لمحلات البيع بالجملة</title>
+  <meta name="author" content="Amr Nour Shehab" />
+  <meta name="description"
+    content="نظام متكامل لإدارة محلات البيع بالجملة — نقاط البيع، المخزون، الفواتير، العملاء، الموردين، الموارد البشرية، التقارير المالية" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            ar: ['Cairo', 'sans-serif'],
+            en: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              25: '#f2f7ff',
+              50: '#ecf3ff',
+              100: '#dde9ff',
+              200: '#c2d6ff',
+              300: '#9cb9ff',
+              400: '#7592ff',
+              500: '#465fff',
+              600: '#3641f5',
+              700: '#2a31d8',
+              800: '#252dae',
+              900: '#262e89',
+              950: '#161950',
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .gradient-brand {
+      background: linear-gradient(135deg, #465fff, #252dae);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #7592ff, #9cb9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow-blue {
+      box-shadow: 0 8px 32px rgba(70, 95, 255, 0.35);
+    }
+
+    .img-hover {
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+    }
+
+    .img-hover:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 60px rgba(70, 95, 255, 0.25);
+    }
+
+    .img-hover-wrap {
+      cursor: zoom-in;
+    }
+
+    .img-hover-wrap:hover .img-hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 60px rgba(70, 95, 255, 0.25);
+    }
+
+    @media print {
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-950 text-white font-ar">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-white/5 no-print">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+        <img src="assets/logo-icon.png" alt="QuantixPro" class="w-9 h-9 rounded-lg glow-blue" />
+        <span class="font-en font-bold text-white text-lg tracking-tight">QuantixPro</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-400">
+        <a href="#features" class="hover:text-white transition-colors">الميزات</a>
+        <a href="#modules" class="hover:text-white transition-colors">الوحدات</a>
+        <a href="#pricing" class="hover:text-white transition-colors">الأسعار</a>
+        <a href="#contact" class="hover:text-white transition-colors">تواصل</a>
+      </div>
+      <a href="#contact"
+        class="gradient-brand text-white text-sm font-bold px-5 py-2.5 rounded-full glow-blue hover:opacity-90 transition-opacity">اطلب
+        النظام</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="min-h-screen flex items-center relative overflow-hidden bg-gray-950 pt-16">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute w-[600px] h-[600px] rounded-full bg-brand-500/10 top-[-200px] right-[-150px] blur-[100px]">
+      </div>
+      <div class="absolute w-[400px] h-[400px] rounded-full bg-brand-400/10 bottom-[50px] left-[-100px] blur-[100px]">
+      </div>
+      <div class="absolute inset-0"
+        style="background-image: linear-gradient(rgba(70,95,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(70,95,255,0.05) 1px, transparent 1px); background-size: 40px 40px;">
+      </div>
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 via-brand-300 to-brand-500"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 w-full">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-0.5 bg-brand-500 rounded-full"></div>
+        <span class="text-brand-400 font-bold text-sm tracking-widest">نظام إدارة متكامل لمحلات البيع بالجملة</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+        كل ما تحتاجه لإدارة<br>محلك في <span class="gradient-text">نظام واحد</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-400 leading-relaxed max-w-xl mb-8">
+        نقاط البيع (POS) + إدارة المخزون + الفواتير + العملاء + الموردين + الموارد البشرية + التقارير المالية — كل هذا
+        في باقة واحدة متكاملة، تعمل بدون إنترنت، وبأعلى مستوى من الدقة والأمان.
+      </p>
+
+      <div class="flex flex-wrap gap-3 mb-12">
+        <span class="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm font-semibold bg-white/5">🧾
+          فواتير ومبيعات</span>
+        <span class="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm font-semibold bg-white/5">📦
+          إدارة المخزون</span>
+        <span class="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm font-semibold bg-white/5">👥
+          عملاء وموردين</span>
+        <span class="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm font-semibold bg-white/5">📊
+          تقارير وإحصائيات</span>
+        <span class="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm font-semibold bg-white/5">👔
+          موارد بشرية</span>
+        <span class="px-4 py-2 rounded-full border border-white/15 text-white/80 text-sm font-semibold bg-white/5">🔒
+          أمان ونسخ احتياطي</span>
+      </div>
+
+      <a href="assets/home_page.png" data-fancybox="gallery"
+        class="block rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-2xl img-hover-wrap"
+        target="_blank">
+        <img src="assets/home_page.png" alt="واجهة النظام الرئيسية" class="w-full h-auto object-cover img-hover" />
+      </a>
+
+      <div class="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
+        <div>
+          <div class="font-en font-semibold text-white/80 text-sm">Amr Nour Shehab</div>
+          <div class="text-xs text-white/30">Software Engineer — مطوّر النظام</div>
+        </div>
+        <div class="font-en text-xs text-white/25 tracking-wider">مصر — الغربية</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STORY ═══ -->
+  <section class="gradient-brand py-24 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute w-[500px] h-[500px] rounded-full bg-white/5 top-[-100px] left-[-100px] blur-[80px]"></div>
+      <div class="absolute inset-0"
+        style="background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 20px);">
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl">
+        <div class="text-white/50 font-bold text-sm tracking-widest mb-5">قصة النظام</div>
+        <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+          وُلِد من احتياج حقيقي<br>في السوق المصري
+        </h2>
+        <p class="text-lg md:text-xl text-white/75 leading-relaxed max-w-lg">
+          صاحب محل بيع بالجملة في إحدى المحافظات كان محتاج نظام يجمع له كل حاجة في مكان واحد — مبيعات، مخزون، عملاء،
+          موردين، موظفين — من غير تعقيد ومن غير أنظمة متفرقة.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <span class="px-4 py-2 rounded-full border border-white/20 text-white text-sm font-bold bg-white/10">📍
+            مصر</span>
+          <span class="px-4 py-2 rounded-full border border-white/20 text-white text-sm font-bold bg-white/10">🏪 محل
+            بيع بالجملة</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MODULES ═══ -->
+  <section id="modules" class="py-24 bg-gray-50 text-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span
+          class="inline-block px-4 py-1.5 rounded-full bg-brand-50 text-brand-600 text-sm font-bold border border-brand-100 mb-4">نظام
+          متكامل من الألف للياء</span>
+        <h2 class="text-4xl md:text-5xl font-black mb-4">كل الوحدات في نظام واحد</h2>
+        <p class="text-gray-500 max-w-xl mx-auto leading-relaxed">QuantixPro مش مجرد برنامج محاسبة — ده نظام متكامل
+          لإدارة محلك بالكامل من البيع للمخزون للموظفين للتقارير.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0 text-xl">🧾</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">المبيعات والفواتير</div>
+            <div class="text-sm text-gray-500 leading-relaxed">شاشة بيع سريعة جداً مع دعم الباركود، الفاتورة بتتطبع في
+              ثوانٍ. يدعم البيع النقدي والآجل، وطباعة حرارية وPDF.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0 text-xl">📦</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">المخزون والمنتجات</div>
+            <div class="text-sm text-gray-500 leading-relaxed">نظام دفعات (Batches) مع FIFO لحساب التكلفة بدقة وتواريخ
+              صلاحية، ليحسب النظام صافى ربحك الحقيقى بدون تقريب او حساب المتوسط وينبهك عند اقتراب انتهاء صلاحية مخزون.
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0 text-xl">👥</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">العملاء</div>
+            <div class="text-sm text-gray-500 leading-relaxed">يفتح النظام حساب مالى للعملاء المسجلين لتتبع رصيدهم
+              والمديونية سواء لى او على المحل، تسجيل المديونيات وتسويتها تلقائياً عند البيع، سجل مدفوعات كامل.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-orange-50 flex items-center justify-center flex-shrink-0 text-xl">🤝</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">الموردين والمشتريات</div>
+            <div class="text-sm text-gray-500 leading-relaxed">تتبع حساب الموردين، تسجيل الديون والمدفوعات, يفتح النظام
+              حساب مالى للموردين لتتبع رصديهم والمديونية سواء لى او على المحل و يدعم تسجيل المشتريات وربطها بمورد.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-purple-50 flex items-center justify-center flex-shrink-0 text-xl">👔</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">الموارد البشرية والرواتب</div>
+            <div class="text-sm text-gray-500 leading-relaxed">إدارة الموظفين، الرواتب، السلف، 3 مستويات صلاحيات (صاحب
+              المحل, مدير, موظف), امكانية فتح حساب للموظف ليتمكن من الدخول للنظام ويسجل النظام اى حدث يقوم به بإسمه.
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 text-xl">💰</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">الديون والشئون المالية</div>
+            <div class="text-sm text-gray-500 leading-relaxed">تسجيل الديون الخارجية (فواتير، خدمات، ديون لأشخاص) مثل
+              فاتير الكهرباء و الإنترنت للمحل ومتابعة السداد.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-teal-50 flex items-center justify-center flex-shrink-0 text-xl">📊</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">التقارير ولوحة التحكم</div>
+            <div class="text-sm text-gray-500 leading-relaxed">إحصائيات مقارنة (يوم/شهر/سنة)، رسوم بيانية، تقارير
+              المبيعات والمخزون.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center flex-shrink-0 text-xl">🛡️</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">الأمان والرقابة</div>
+            <div class="text-sm text-gray-500 leading-relaxed">سجل أحداث كامل يسجل كل شئ يحدث ومن الذى قام به، إشعارات
+              بريد إلكتروني لصاحب المحل تخبره بكل ما يحدث، نظام إشعارات داخلية، نسخ احتياطي موقّع الكترونياً لأعلى درجات
+              الأمان.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0 text-xl">🖨️</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">الأجهزة والطباعة</div>
+            <div class="text-sm text-gray-500 leading-relaxed">متوافق مع قارئ الباركود، و الطابعة الحرارية 80mm، طباعة
+              A4، طباعة سريعة جداً وواضحة.</div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-orange-50 flex items-center justify-center flex-shrink-0 text-xl">🔄</div>
+          <div>
+            <div class="font-bold text-gray-900 mb-1">التحديثات عن بُعد</div>
+            <div class="text-sm text-gray-500 leading-relaxed">تحديث تلقائي عن بعد، عرض تفاصيل التحديث، نسخ احتياطي قبل
+              التحديث.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SALES FEATURE ═══ -->
+  <section id="features" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="flex-1">
+          <div class="w-12 h-1 bg-brand-500 rounded-full mb-6"></div>
+          <span class="text-brand-500 font-bold text-sm tracking-widest block mb-1">المبيعات والفواتير</span>
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-4">بيع <span
+              class="text-brand-500">أسرع</span> — من غير تعقيد</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            صفحة البيع مصممة خصيصاً لتكون أسرع وأسهل واجهة بيع ممكنة. تدخل، تمسك الباركود سكانر، وتنجز الفاتورة في
+            ثوانٍ.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">تركيز تلقائي على حقل الباركود — امسح وخلاص</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">اختصار F1 من أي مكان في النظام عشان تفتح البيع بسرعة</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">دعم البيع النقدي والآجل — لو العميل معهوش كامل المبلغ، الباقي
+                يتسجل دين تلقائياً</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">طباعة فورية على الطابعة الحرارية 80mm أو تحميل PDF بحجم A4</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">إمكانية تغيير سعر البيع للبند الواحد فى الفاتورة (خصم أو زيادة)
+                حسب الاتفاق مع العميل</span>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="px-3 py-1.5 rounded-md bg-brand-50 text-brand-700 text-sm font-semibold">البيع بالباركود</span>
+            <span class="px-3 py-1.5 rounded-md bg-brand-50 text-brand-700 text-sm font-semibold">طباعة حرارية
+              سريعة</span>
+            <span class="px-3 py-1.5 rounded-md bg-brand-50 text-brand-700 text-sm font-semibold">فواتير PDF</span>
+            <span class="px-3 py-1.5 rounded-md bg-brand-50 text-brand-700 text-sm font-semibold">بيع آجل + تسجيل
+              المديونية</span>
+          </div>
+        </div>
+        <div class="flex-1 w-full">
+          <a href="assets/add_sale_page.png" data-fancybox="gallery"
+            class="block rounded-2xl overflow-hidden border border-gray-200 shadow-xl img-hover-wrap" target="_blank">
+            <img src="assets/add_sale_page.png" alt="شاشة البيع" class="w-full h-auto object-cover img-hover" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INVENTORY FEATURE ═══ -->
+  <section class="py-24 bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-7 h-0.5 bg-brand-400 rounded-full"></div>
+            <span class="text-brand-400 font-bold text-sm tracking-widest">المخزون والمنتجات</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-black text-white leading-tight mb-4">أرباحك <span
+              class="gradient-text">بدقة</span> مش بالتخمين</h2>
+          <p class="text-gray-400 leading-relaxed mb-6">
+            المشكلة اللي بيعاني منها معظم أصحاب المحلات: عندك منتج جاي بدفعتين بسعرين مختلفين — مينفعش تحسب متوسط.
+            QuantixPro بيحل المشكلة دي بنظام الدفعات (Stock Batches).
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 p-3.5 rounded-xl border border-white/10 bg-white/5">
+              <div class="w-9 h-9 rounded-lg bg-brand-500/20 flex items-center justify-center flex-shrink-0 text-lg">📦
+              </div>
+              <div>
+                <div class="text-sm font-bold text-white/90">المنتجات منفصلة عن المخزون</div>
+                <div class="text-xs text-white/45">المنتج فيه البيانات الأساسية — وكل دفعة مخزون ليها سعرها وكميتها
+                  وتاريخ صلاحيتها</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3.5 rounded-xl border border-white/10 bg-white/5">
+              <div class="w-9 h-9 rounded-lg bg-brand-500/20 flex items-center justify-center flex-shrink-0 text-lg">📊
+              </div>
+              <div>
+                <div class="text-sm font-bold text-white/90">سياسة FIFO التلقائية</div>
+                <div class="text-xs text-white/45">أول كمية دخلت هي اللي بتطلع أولاً — حساب التكلفة والربح بدقة</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3.5 rounded-xl border border-white/10 bg-white/5">
+              <div class="w-9 h-9 rounded-lg bg-brand-500/20 flex items-center justify-center flex-shrink-0 text-lg">⚠️
+              </div>
+              <div>
+                <div class="text-sm font-bold text-white/90">تنبيهات النفاذ وانتهاء الصلاحية</div>
+                <div class="text-xs text-white/45">النظام ينبهك لو منتج قرب يخلص أو لو دفعة قربت تنتهي صلاحيتها</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3.5 rounded-xl border border-white/10 bg-white/5">
+              <div class="w-9 h-9 rounded-xl bg-brand-500/20 flex items-center justify-center flex-shrink-0 text-lg">🏷️
+              </div>
+              <div>
+                <div class="text-sm font-bold text-white/90">باركود إجباري</div>
+                <div class="text-xs text-white/45">كل منتج ليه باركود للبيع بالاسكانر — وتعديله متاح لصاحب المحل والمدير
+                  فقط</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1 w-full">
+          <a href="assets/product_and_its_batches_details.png" data-fancybox="gallery"
+            class="block rounded-2xl overflow-hidden border border-white/10 shadow-xl img-hover-wrap" target="_blank">
+            <img src="assets/product_and_its_batches_details.png" alt="شاشة المخزون"
+              class="w-full h-auto object-cover img-hover" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CLIENTS & SUPPLIERS ═══ -->
+  <section class="py-24 relative overflow-hidden bg-gray-950">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute w-[500px] h-[500px] rounded-full bg-brand-500/10 top-[-100px] left-[-100px] blur-[100px]">
+      </div>
+    </div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl mb-12">
+        <span
+          class="inline-block px-4 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 text-sm font-bold mb-4">✦
+          العملاء والموردين</span>
+        <h2 class="text-3xl md:text-4xl font-black text-white leading-tight mb-4">كل الحسابات المالية في مكان واحد</h2>
+        <p class="text-gray-400 leading-relaxed">QuantixPro بيهندل حسابات العملاء والموردين والديون بطريقة ذكية — الدين
+          بيتسجل تلقائياً، والرصيد بيتحدّث لحظياً.</p>
+      </div>
+
+      <div class="flex flex-wrap gap-6 mb-10">
+        <div class="flex-1 min-w-[160px]">
+          <div class="text-white font-black text-2xl md:text-3xl leading-none mb-1">عملاء</div>
+          <div class="text-gray-500 text-sm">رصيد مفتوح — تلقائي</div>
+        </div>
+        <div class="flex-1 min-w-[160px]">
+          <div class="text-white font-black text-2xl md:text-3xl leading-none mb-1">موردين</div>
+          <div class="text-gray-500 text-sm">حساب دائن — مشتريات</div>
+        </div>
+        <div class="flex-1 min-w-[160px]">
+          <div class="text-white font-black text-2xl md:text-3xl leading-none mb-1">ديون</div>
+          <div class="text-gray-500 text-sm">خارجية — فواتير وخدمات</div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="flex items-start gap-4 p-4 rounded-xl border border-white/10 bg-white/5">
+          <div class="text-2xl flex-shrink-0">👥</div>
+          <div>
+            <div class="text-sm font-bold text-white/90 mb-1">العملاء</div>
+            <div class="text-xs text-white/50 leading-relaxed">تسجيل العملاء، تتبع رصيدهم تلقائياً، تسجيل مديونية العميل
+              عند البيع الآجل، وإمكانية إضافة رصيد أو تسديد في أي وقت.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-4 rounded-xl border border-white/10 bg-white/5">
+          <div class="text-2xl flex-shrink-0">🤝</div>
+          <div>
+            <div class="text-sm font-bold text-white/90 mb-1">الموردين والمشتريات</div>
+            <div class="text-xs text-white/50 leading-relaxed">تسجيل الموردين، حفظ سجل المشتريات بالكامل، تتبع المديونية
+              المستحقة للموردين، وتسجيل المدفوعات.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-4 rounded-xl border border-white/10 bg-white/5">
+          <div class="text-2xl flex-shrink-0">💰</div>
+          <div>
+            <div class="text-sm font-bold text-white/90 mb-1">الديون والشئون المالية</div>
+            <div class="text-xs text-white/50 leading-relaxed">تسجيل أي ديون خارجية على المحل (فواتير كهرباء، إنترنت،
+              ديون لأشخاص) ومتابعة ما تم سداده وما تبقى.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HR FEATURE ═══ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="flex-1">
+          <div class="w-12 h-1 bg-brand-500 rounded-full mb-6"></div>
+          <span class="text-brand-500 font-bold text-sm tracking-widest block mb-1">الموارد البشرية والصلاحيات</span>
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-4">تحكّم كامل في <span
+              class="text-brand-500">موظفيك</span> من مكان واحد</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            سجل كل الموظفين، حدد مين له حق الدخول للنظام، وحدد له الصلاحيات اللي تناسبه. النظام مصمم يحافظ على خصوصية
+            صاحب المحل.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-4 p-3.5 rounded-xl border border-gray-200 bg-gray-50">
+              <div class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0 text-lg">👔
+              </div>
+              <div>
+                <div class="text-sm font-bold text-gray-900">إدارة الموظفين</div>
+                <div class="text-xs text-gray-500">تسجيل جميع الموظفين — وربطهم بحسابات دخول أو تركهم بدون حساب</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3.5 rounded-xl border border-gray-200 bg-gray-50">
+              <div class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0 text-lg">💰
+              </div>
+              <div>
+                <div class="text-sm font-bold text-gray-900">الرواتب والسلف</div>
+                <div class="text-xs text-gray-500">حساب صافي الراتب، تسجيل السلف، وتاريخ المدفوعات لكل موظف</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3.5 rounded-xl border border-gray-200 bg-gray-50">
+              <div class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0 text-lg">🔑
+              </div>
+              <div>
+                <div class="text-sm font-bold text-gray-900">3 مستويات صلاحيات</div>
+                <div class="text-xs text-gray-500">أدمن (كل حاجة) — مدير (بس مايشوفش الأرباح) — موظف (بيع وتقارير فقط)
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3.5 rounded-xl border border-gray-200 bg-gray-50">
+              <div class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0 text-lg">🔌
+              </div>
+              <div>
+                <div class="text-sm font-bold text-gray-900">تعطيل وتفعيل الحسابات</div>
+                <div class="text-xs text-gray-500">قدرة على تعطيل حساب الموظف من الدخول وتفعيله مرة أخرى</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1 w-full">
+          <a href="assets/employeers_page.png" data-fancybox="gallery"
+            class="block rounded-2xl overflow-hidden border border-gray-200 shadow-xl img-hover-wrap" target="_blank">
+            <img src="assets/employeers_page.png" alt="شاشة الموظفين" class="w-full h-auto object-cover img-hover" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DASHBOARD & REPORTS ═══ -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-start justify-between mb-12">
+        <div>
+          <div class="w-12 h-1 bg-brand-500 rounded-full mb-4"></div>
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight">أرقام تتكلم عن نفسها</h2>
+          <p class="text-gray-500 mt-3 max-w-md leading-relaxed">لوحة تحكم واحدة بتجمّعلك كل حاجة — إحصائيات اليوم،
+            الشهر، والسنة في مقارنة واحدة.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="gradient-brand rounded-2xl p-6 relative overflow-hidden">
+          <div class="absolute bottom-[-20px] left-[-20px] w-[100px] h-[100px] rounded-full bg-white/5"></div>
+          <div class="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center text-xl mb-3">📊</div>
+          <div class="font-en font-black text-white text-3xl mb-1"><span class="text-lg">+</span>%150</div>
+          <div class="text-white/80 text-sm font-semibold mb-1">نسبة الإختلاف فى الربح</div>
+          <div class="text-white/50 text-xs leading-relaxed">مقارنة تفصيلية بين بالقيم والنسب بين إجمالي مبيعات اليوم
+            والشهر والسنة</div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-gray-200">
+          <div class="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center text-xl mb-3">📋</div>
+          <div class="font-en font-black text-gray-900 text-3xl mb-1">6</div>
+          <div class="text-gray-600 text-sm font-semibold mb-1">تقارير تفصيلية</div>
+          <div class="text-gray-400 text-xs leading-relaxed">امكانية تصدير تقارير (مبيعات, مشتريات, شاملة) لأى فترة
+            زمنية بسهولة وتحميلها كملف PDF.</div>
+        </div>
+        <div class="bg-gray-900 rounded-2xl p-6 relative overflow-hidden">
+          <div class="absolute bottom-[-20px] left-[-20px] w-[100px] h-[100px] rounded-full bg-white/5"></div>
+          <div class="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center text-xl mb-3">📈</div>
+          <div class="font-en font-black text-white text-3xl mb-1">2</div>
+          <div class="text-white/80 text-sm font-semibold mb-1">رسم بياني</div>
+          <div class="text-white/50 text-xs leading-relaxed">اتجاهات المبيعات طوال الشهر ومعرفة إجمالى مبيعات اى يوم
+            بسهولة</div>
+        </div>
+        <div class="rounded-2xl p-6 relative overflow-hidden"
+          style="background: linear-gradient(135deg, #039855, #027a48);">
+          <div class="absolute bottom-[-20px] left-[-20px] w-[100px] h-[100px] rounded-full bg-white/5"></div>
+          <div class="w-11 h-11 rounded-xl bg-white/20 flex items-center justify-center text-xl mb-3">🎯</div>
+          <div class="font-en font-black text-white text-3xl mb-1">3</div>
+          <div class="text-white/80 text-sm font-semibold mb-1">بحث متقدم</div>
+          <div class="text-white/50 text-xs leading-relaxed">بحث فوري عن أي صفحة أو عميل أو فاتورة بسهولة وسرعة</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECURITY FEATURE ═══ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+        <div class="flex-1">
+          <div class="w-12 h-1 bg-brand-500 rounded-full mb-6"></div>
+          <span class="text-brand-500 font-bold text-sm tracking-widest block mb-1">الأمان والرقابة</span>
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-4">أمان <span
+              class="text-brand-500">على أعلى مستوى</span></h2>
+          <p class="text-gray-500 leading-relaxed mb-6">النظام بيسجل كل حاجة — مين عمل إيه وإمتى — وبيرسل لك إيميل بكل
+            حدث بيحصل. كمان فيه نسخ احتياطي موقّع ومشفّر.</p>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">سجل أحداث (Audit Log) — كل حدث في النظام مسجل بنجاحه أو فشله
+                وبياناته</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">إشعارات بريد إلكتروني — كل الأحداث المهمة بتوصل لصاحب المحل على
+                الإيميل</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">إشعارات داخلية — مخزن آخر للأحداث داخل النظام نفسه</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">نسخ احتياطي موقّع رقمياً — واستعادة بسهولة عن طريق رفع ملف
+                النسخة</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg viewBox="0 0 12 12" fill="none" class="w-3 h-3">
+                  <path d="M2 6l3 3 5-5" stroke="#465fff" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">تحديثات تلقائية عن بعد مع أخذ نسخة احتياطية قبل التحديث</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1 w-full">
+          <a href="assets/audit_records_page.png" data-fancybox="gallery"
+            class="block rounded-2xl overflow-hidden border border-gray-200 shadow-xl img-hover-wrap" target="_blank">
+            <img src="assets/audit_records_page.png" alt="شاشة الأمان والأحداث"
+              class="w-full h-auto object-cover img-hover" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPARISON ═══ -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span
+          class="inline-block px-4 py-1.5 rounded-full bg-brand-50 text-brand-600 text-sm font-bold border border-brand-100 mb-4">مقارنة
+          الأنظمة</span>
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">ليه QuantixPro مش أي نظام تاني؟</h2>
+        <p class="text-gray-500 max-w-lg mx-auto leading-relaxed">مقارنة شفافة بين QuantixPro والبرامج التانية المتاحة
+          في السوق المصري</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-900">
+              <th class="text-right p-3 pr-5 font-bold text-white/80 text-xs w-[32%]">الميزة</th>
+              <th class="text-right p-3 font-bold text-white bg-brand-500 text-xs w-[22%]">QuantixPro</th>
+              <th class="text-right p-3 font-bold text-white/80 text-xs w-[23%]">أغلب برامج الجملة</th>
+              <th class="text-right p-3 font-bold text-white/80 text-xs w-[23%]">أغلب المنصات السحابية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">نظام دفعات FIFO لدقة الأرباح</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> جزئي</td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">يعمل بدون إنترنت — كامل على جهازك</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">واجهة عربية حديثة + دعم الوضع الداكن</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> أحياناً</td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">طباعة حرارية سريعة — تدعم حتى أرخص الطابعات</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">تحديثات تلقائية عن بعد — بدون زيارة</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="p-3 text-gray-600"><span class="text-green-500 text-lg font-bold">✔</span></td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">إحصائيات مقارنة (يوم / شهر / سنة)</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> محدود</td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> محدود</td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">نسخ احتياطي موقّع رقمياً</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span></td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">نظام صلاحيات 3 مستويات</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span></td>
+              <td class="p-3 text-gray-600"><span class="text-green-500 text-lg font-bold">✔</span></td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">سجل أحداث (Audit Log) كامل</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span></td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">إدارة رواتب وسلف موظفين</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> نادراً</td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> محدود</td>
+            </tr>
+            <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
+              <td class="p-3 pr-5 font-semibold text-gray-900">إشعارات بريد إلكتروني لكل الأحداث</td>
+              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex gap-4 mt-4 text-xs text-gray-400">
+        <span><span class="text-green-500 text-base font-bold">✔</span> متاح</span>
+        <span><span class="text-amber-500 text-base font-bold">●</span> جزئي / محدود</span>
+        <span><span class="text-gray-300 text-base font-bold">✗</span> غير متاح</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STEPS ═══ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-start justify-between mb-12">
+        <div>
+          <div class="w-12 h-1 bg-brand-500 rounded-full mb-4"></div>
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight">البدء مع QuantixPro<br>في 4 خطوات
+            بسيطة</h2>
+          <p class="text-gray-500 mt-3 max-w-md leading-relaxed">التركيب سريع والتدريب بسيط — وانت في السوق من أول يوم.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-0">
+        <div class="flex gap-5 relative">
+          <div class="flex flex-col items-center">
+            <div
+              class="w-11 h-11 rounded-full gradient-brand text-white font-en font-black text-base flex items-center justify-center flex-shrink-0 glow-blue">
+              1</div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-brand-200 to-transparent min-h-[24px]"></div>
+          </div>
+          <div class="flex-1 pb-6 pt-2">
+            <div class="font-bold text-gray-900 text-lg mb-1.5">التركيب والإعداد الأولي</div>
+            <div class="text-gray-500 text-sm leading-relaxed">يتم تركيب النظام على جهازك في دقائق. لا يحتاج إنترنت دائم
+              ولا سيرفر خارجي. النظام شغال ومتاح فور التركيب.</div>
+          </div>
+        </div>
+        <div class="flex gap-5 relative">
+          <div class="flex flex-col items-center">
+            <div
+              class="w-11 h-11 rounded-full gradient-brand text-white font-en font-black text-base flex items-center justify-center flex-shrink-0 glow-blue">
+              2</div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-brand-200 to-transparent min-h-[24px]"></div>
+          </div>
+          <div class="flex-1 pb-6 pt-2">
+            <div class="font-bold text-gray-900 text-lg mb-1.5">إدخال بيانات المحل</div>
+            <div class="text-gray-500 text-sm leading-relaxed">أدخل بيانات المحل — اسمه، عنوانه، رقمه الضريبي — ثم أضف
+              منتجاتك وعملاءك ومورديك وموظفيك. خلال ساعات تكون جاهز.</div>
+          </div>
+        </div>
+        <div class="flex gap-5 relative">
+          <div class="flex flex-col items-center">
+            <div
+              class="w-11 h-11 rounded-full gradient-brand text-white font-en font-black text-base flex items-center justify-center flex-shrink-0 glow-blue">
+              3</div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-brand-200 to-transparent min-h-[24px]"></div>
+          </div>
+          <div class="flex-1 pb-6 pt-2">
+            <div class="font-bold text-gray-900 text-lg mb-1.5">يوم تدريب مع المطوّر</div>
+            <div class="text-gray-500 text-sm leading-relaxed">جلسة تدريبية عملية تشرح كل وظيفة في النظام بالعربية
+              البسيطة وبإسلوب واضح. أول عميل فهم النظام في يومين فقط وذلك لسهولته.</div>
+          </div>
+        </div>
+        <div class="flex gap-5 relative">
+          <div class="flex flex-col items-center">
+            <div
+              class="w-11 h-11 rounded-full bg-gray-200 text-gray-400 font-en font-black text-base flex items-center justify-center flex-shrink-0">
+              4</div>
+          </div>
+          <div class="flex-1 pt-2">
+            <div class="font-bold text-gray-900 text-lg mb-1.5">متابعة ودعم مستمر</div>
+            <div class="text-gray-500 text-sm leading-relaxed">التحديثات العامة الجديدة تصلك عن بعد بدون تأخير عملك او
+              انتظار لزيارة. الدعم الفني متاح. وكل اقتراح منك بيوضع فى الاعتبار كتحسين في الإصدار القادم.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section id="pricing" class="py-24 bg-gray-950 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute w-[500px] h-[500px] rounded-full bg-brand-500/15 top-[-150px] right-[-100px] blur-[100px]">
+      </div>
+      <div class="absolute inset-0"
+        style="background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 50px 50px;">
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span
+          class="inline-block px-4 py-1.5 rounded-full border border-brand-400/30 bg-brand-500/15 text-brand-300 text-sm font-bold mb-4">💰
+          الأسعار</span>
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-3">استثمار يُترجَم لأرباح حقيقية</h2>
+        <p class="text-gray-400 max-w-md mx-auto leading-relaxed">رسوم تركيب لمرة واحدة + اشتراك سنوي — بدون رسوم مخفية
+          أو تعقيد.</p>
+      </div>
+
+      <div class="max-w-xl mx-auto">
+        <div class="gradient-brand rounded-3xl p-8 md:p-10 relative overflow-hidden border border-brand-400/50">
+          <div
+            class="absolute top-3 left-3 bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+            الباقة الكاملة</div>
+          <div class="absolute bottom-[-40px] right-[-40px] w-[140px] h-[140px] rounded-full bg-white/5"></div>
+
+          <div class="flex items-end gap-3 mb-4">
+            <div class="font-en font-black text-white text-5xl md:text-6xl leading-none">9,700</div>
+            <div class="text-white/60 text-sm pb-1.5 leading-tight">جنيه مصري<br>أول سنة</div>
+          </div>
+          <div class="text-white/40 text-sm mb-6">رسوم التركيب + أول سنة اشتراك — دفعة واحدة</div>
+
+          <div class="h-px bg-white/15 mb-6"></div>
+
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white/10 border border-white/15 rounded-xl p-4 md:p-5">
+              <div class="text-white/50 text-xs font-semibold mb-1">رسوم التركيب</div>
+              <div class="font-en font-black text-white text-2xl md:text-3xl">6,900 <span
+                  class="text-sm font-normal text-white/40">ج.م</span></div>
+              <div class="text-white/40 text-xs">مرة واحدة عند التعاقد</div>
+            </div>
+            <div class="bg-white/10 border border-white/15 rounded-xl p-4 md:p-5">
+              <div class="text-white/50 text-xs font-semibold mb-1">الاشتراك السنوي</div>
+              <div class="font-en font-black text-white text-2xl md:text-3xl">2,800 <span
+                  class="text-sm font-normal text-white/40">ج.م</span></div>
+              <div class="text-white/40 text-xs">كل سنة (يشمل أول سنة)</div>
+            </div>
+          </div>
+
+          <div class="h-px bg-white/15 mb-6"></div>
+
+          <div class="grid md:grid-cols-2 gap-x-4 gap-y-3">
+            <div class="flex items-center gap-2.5 text-sm text-white/80">
+              <div
+                class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs text-white flex-shrink-0">
+                ✔</div>
+              تركيب كامل على جهازك
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-white/80">
+              <div
+                class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs text-white flex-shrink-0">
+                ✔</div>
+              يوم تدريب مع المطوّر
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-white/80">
+              <div
+                class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs text-white flex-shrink-0">
+                ✔</div>
+              جميع الوحدات مفعّلة
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-white/80">
+              <div
+                class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs text-white flex-shrink-0">
+                ✔</div>
+              استلام التحديثات العامة الجديدة
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-white/80">
+              <div
+                class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs text-white flex-shrink-0">
+                ✔</div>
+              دعم فني للنظام مستمر
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-white/80">
+              <div
+                class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs text-white flex-shrink-0">
+                ✔</div>
+              إصلاح أعطال النظام فوراً
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <p class="text-gray-500 text-sm">بعد أول سنة — تجديد سنوي بقيمة <strong
+              class="text-white/80 font-en font-bold">2,800</strong> ج.م فقط (تحديثات + دعم فني)</p>
+        </div>
+
+        <div class="text-center mt-10">
+          <p class="text-gray-500 text-xs">السعر قابل للنقاش حسب حجم النشاط — تواصل معنا لمعرفة أفضل عرض لك</p>
+          <p class="text-gray-600 text-xs mt-2 font-en">QuantixPro — v1.7.7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER / CONTACT ═══ -->
+  <footer id="contact" class="py-20 bg-gray-900 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div
+        class="absolute w-[600px] h-[600px] rounded-full bg-brand-500/10 bottom-[-200px] right-[-100px] blur-[100px]">
+      </div>
+      <div class="absolute w-[300px] h-[300px] rounded-full bg-green-500/8 top-[80px] left-[80px] blur-[80px]"></div>
+      <div class="absolute inset-0"
+        style="background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 48px 48px;">
+      </div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-brand-500 to-transparent">
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+      <img src="assets/logo-icon.png" alt="QuantixPro" class="w-[76px] h-[76px] rounded-2xl mx-auto mb-6 glow-blue" />
+
+      <h2 class="font-en font-black text-white text-4xl md:text-5xl tracking-tight mb-4">QuantixPro</h2>
+      <p class="text-gray-400 text-lg max-w-md mx-auto leading-relaxed mb-8">تحكّم كامل في محلك،<br>وضوح تام في أرباحك.
+      </p>
+
+      <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-brand-500 to-transparent mx-auto mb-10"></div>
+
+      <div class="flex flex-wrap justify-center gap-8 mb-10">
+        <a href="https://wa.me/201029671620" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-2 group">
+          <div
+            class="w-11 h-11 rounded-xl bg-brand-500/20 border border-brand-400/30 flex items-center justify-center text-lg group-hover:bg-brand-500/30 group-hover:border-brand-400/50 transition-all">
+            📱</div>
+          <span class="text-white/40 text-xs font-semibold tracking-widest">واتساب</span>
+          <span class="font-en text-white/80 text-sm font-semibold group-hover:text-white transition-colors" dir="ltr">+20 01029671620</span>
+        </a>
+        <a href="mailto:amr.suport@hotmail.com" class="flex flex-col items-center gap-2 group">
+          <div
+            class="w-11 h-11 rounded-xl bg-brand-500/20 border border-brand-400/30 flex items-center justify-center text-lg group-hover:bg-brand-500/30 group-hover:border-brand-400/50 transition-all">
+            📧</div>
+          <span class="text-white/40 text-xs font-semibold tracking-widest">البريد</span>
+          <span class="font-en text-white/80 text-sm font-semibold group-hover:text-white transition-colors" dir="ltr">amr.suport@hotmail.com</span>
+        </a>
+        <a href="https://amrn0ur.netlify.app" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-2 group">
+          <div
+            class="w-11 h-11 rounded-xl bg-brand-500/20 border border-brand-400/30 flex items-center justify-center text-lg group-hover:bg-brand-500/30 group-hover:border-brand-400/50 transition-all">
+            🌐</div>
+          <span class="text-white/40 text-xs font-semibold tracking-widest">الموقع</span>
+          <span class="font-en text-white/80 text-sm font-semibold group-hover:text-white transition-colors" dir="ltr">https://amrn0ur.netlify.app</span>
+        </a>
+        <a href="https://www.google.com/maps?q=%D9%85%D8%B5%D8%B1+%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9+%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-2 group">
+          <div
+            class="w-11 h-11 rounded-xl bg-brand-500/20 border border-brand-400/30 flex items-center justify-center text-lg group-hover:bg-brand-500/30 group-hover:border-brand-400/50 transition-all">
+            📍</div>
+          <span class="text-white/40 text-xs font-semibold tracking-widest">العنوان</span>
+          <span class="text-white/80 text-sm font-semibold group-hover:text-white transition-colors">مصر, محافظة الغربية</span>
+        </a>
+      </div>
+
+      <div class="w-20 h-0.5 bg-gradient-to-r from-transparent via-brand-500 to-transparent mx-auto mb-10"></div>
+
+      <div class="inline-flex flex-col items-center gap-2 bg-white/5 border border-white/10 rounded-2xl px-8 py-5">
+        <img src="assets/dev_logo.png" alt="Amr Nour" class="w-14 h-14 rounded-full glow-blue" />
+        <div class="font-en font-bold text-white text-lg">Amr Nour Shehab</div>
+        <div class="font-en text-brand-400 text-xs font-medium">Software Engineer — مطوّر النظام</div>
+        <p class="text-white/40 text-xs text-center max-w-xs leading-relaxed">صمّمت ونفّذت QuantixPro بالكامل من الصفر،
+          مبنياً على احتياجات حقيقية من السوق المصري.</p>
+      </div>
+
+      <div class="font-en text-white/15 text-xs tracking-wider mt-10">© 2025 QuantixPro — All Rights Reserved</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      dragToClose: true,
+      closeButton: "top",
+      Image: { zoom: true },
+      theme: "dark",
+      Toolbar: {
+        display: { left: [], middle: [], right: ["close"] },
+      },
+      Carousel: { transition: "slide" },
+    });
+  </script>
+</body>
+
+</html>
