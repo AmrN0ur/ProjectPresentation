@@ -112,6 +112,31 @@
       box-shadow: 0 20px 60px rgba(70, 95, 255, 0.25);
     }
 
+    .comparison-table {
+      font-size: clamp(0.625rem, 1.6vw, 0.875rem);
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: clamp(0.5rem, 1.2vw, 0.75rem);
+      padding-right: clamp(0.75rem, 1.8vw, 1.25rem);
+    }
+    .comparison-table .symbol {
+      font-size: clamp(0.75rem, 2vw, 1.125rem);
+    }
+    .comparison-table .legend {
+      font-size: clamp(0.5625rem, 1.4vw, 0.75rem);
+    }
+    .comparison-table .legend .symbol {
+      font-size: clamp(0.75rem, 2vw, 1rem);
+    }
+
+    @media (max-width: 480px) {
+      .comparison-table th,
+      .comparison-table td {
+        padding: 0.4rem 0.5rem;
+      }
+    }
+
     @media print {
       .no-print {
         display: none;
@@ -750,100 +775,100 @@
       </div>
 
       <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
-        <table class="w-full text-sm">
+        <table class="comparison-table w-full">
           <thead>
             <tr class="bg-gray-900">
-              <th class="text-right p-3 pr-5 font-bold text-white/80 text-xs w-[32%]">الميزة</th>
-              <th class="text-right p-3 font-bold text-white bg-brand-500 text-xs w-[22%]">QuantixPro</th>
-              <th class="text-right p-3 font-bold text-white/80 text-xs w-[23%]">أغلب برامج الجملة</th>
-              <th class="text-right p-3 font-bold text-white/80 text-xs w-[23%]">أغلب المنصات السحابية</th>
+              <th class="text-right font-bold text-white/80 w-[32%]">الميزة</th>
+              <th class="text-right font-bold text-white bg-brand-500 w-[22%]">QuantixPro</th>
+              <th class="text-right font-bold text-white/80 w-[23%]">أغلب برامج الجملة</th>
+              <th class="text-right font-bold text-white/80 w-[23%]">أغلب المنصات السحابية</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">نظام دفعات FIFO لدقة الأرباح</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> جزئي</td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="font-semibold text-gray-900">نظام دفعات FIFO لدقة الأرباح</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span> جزئي</td>
+              <td class="text-gray-600"><span class="text-gray-300 symbol font-bold">✗</span></td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">يعمل بدون إنترنت — كامل على جهازك</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="font-semibold text-gray-900">يعمل بدون إنترنت — كامل على جهازك</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-gray-300 symbol font-bold">✗</span></td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">واجهة عربية حديثة + دعم الوضع الداكن</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> أحياناً</td>
+              <td class="font-semibold text-gray-900">واجهة عربية عصريه + دعم الوضع الداكن</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-gray-300 symbol font-bold">✗</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span> أحياناً</td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">طباعة حرارية سريعة — تدعم حتى أرخص الطابعات</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
+              <td class="font-semibold text-gray-900">طباعة حرارية سريعة</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-gray-300 symbol font-bold">✗</span></td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">تحديثات تلقائية عن بعد — بدون زيارة</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
-              <td class="p-3 text-gray-600"><span class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="font-semibold text-gray-900">تحديثات عن بعد — بدون الاضطرار لزيارة</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-gray-300 symbol font-bold">✗</span></td>
+              <td class="text-gray-600"><span class="text-green-500 symbol font-bold">✔</span></td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">إحصائيات مقارنة (يوم / شهر / سنة)</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> محدود</td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> محدود</td>
+              <td class="font-semibold text-gray-900">إحصائيات مقارنة (يوم / شهر / سنة)</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span></td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">نسخ احتياطي موقّع رقمياً</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span></td>
+              <td class="font-semibold text-gray-900">نسخ احتياطي موقّع رقمياً</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span> غير موقّع</td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span> غير موقّع</td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">نظام صلاحيات 3 مستويات</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span></td>
-              <td class="p-3 text-gray-600"><span class="text-green-500 text-lg font-bold">✔</span></td>
+              <td class="font-semibold text-gray-900">نظام صلاحيات 3 مستويات</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span></td>
+              <td class="text-gray-600"><span class="text-green-500 symbol font-bold">✔</span></td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">سجل أحداث (Audit Log) كامل</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span></td>
+              <td class="font-semibold text-gray-900">سجل أحداث (Audit Log) كامل</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-gray-300 symbol font-bold">✗</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span></td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">إدارة رواتب وسلف موظفين</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> نادراً</td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span> محدود</td>
+              <td class="font-semibold text-gray-900">إدارة رواتب وسلف موظفين</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span> نادراً</td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span> محدود</td>
             </tr>
             <tr class="border-b border-gray-200 even:bg-white odd:bg-gray-50">
-              <td class="p-3 pr-5 font-semibold text-gray-900">إشعارات بريد إلكتروني لكل الأحداث</td>
-              <td class="p-3 font-bold text-gray-900 bg-brand-50/50"><span
-                  class="text-green-500 text-lg font-bold">✔</span></td>
-              <td class="p-3 text-gray-600"><span class="text-gray-300 text-lg font-bold">✗</span></td>
-              <td class="p-3 text-gray-600"><span class="text-amber-500 text-lg font-bold">●</span></td>
+              <td class="font-semibold text-gray-900">إشعارات بريد إلكتروني لكل الأحداث</td>
+              <td class="font-bold text-gray-900 bg-brand-50/50"><span
+                  class="text-green-500 symbol font-bold">✔</span></td>
+              <td class="text-gray-600"><span class="text-gray-300 symbol font-bold">✗</span></td>
+              <td class="text-gray-600"><span class="text-amber-500 symbol font-bold">●</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="flex gap-4 mt-4 text-xs text-gray-400">
-        <span><span class="text-green-500 text-base font-bold">✔</span> متاح</span>
-        <span><span class="text-amber-500 text-base font-bold">●</span> جزئي / محدود</span>
-        <span><span class="text-gray-300 text-base font-bold">✗</span> غير متاح</span>
+      <div class="flex gap-4 mt-4 text-black comparison-table legend">
+        <span><span class="text-green-500 symbol font-bold">✔</span> متاح</span>
+        <span><span class="text-amber-500 symbol font-bold">●</span> جزئي / محدود</span>
+        <span><span class="text-gray-300 symbol font-bold">✗</span> غير متاح</span>
       </div>
     </div>
   </section>
