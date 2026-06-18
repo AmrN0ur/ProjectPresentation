@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GHO Press — منظومة إدارة الأوردات وتتبع الإنتاج | A.N | Solutions</title>
+  <meta name="description" content="العرض الفني والمالي المتكامل لتطوير منظومة GHO Press الرقمية لإدارة الأوردات وتتبع الإنتاج لمطبعة الغباشي" />
+  <meta name="keywords" content="GHO Press, مطبعة الغباشي, إدارة الأوردات, تتبع الإنتاج, نظام مطابع, A.N | Solutions" />
+  <meta name="author" content="A.N | Solutions" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="GHO Press — منظومة إدارة الأوردات وتتبع الإنتاج | A.N | Solutions" />
+  <meta property="og:description" content="العرض الفني والمالي المتكامل لتطوير منظومة GHO Press الرقمية لإدارة الأوردات وتتبع الإنتاج لمطبعة الغباشي" />
+  <meta property="og:image" content="../../AN_Logo.png" />
+  <meta property="og:url" content="https://deltabase.netlify.app/GHO" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:site_name" content="A.N | Solutions" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GHO Press — منظومة إدارة الأوردات وتتبع الإنتاج | A.N | Solutions" />
+  <meta name="twitter:description" content="منظومة رقمية متكاملة لمطبعة الغباشي — موديول الأوردات الذكي، صلاحيات RBAC، عارض تصاميم، تتبع الإنتاج، وتحليلات تنبؤية" />
+  <meta name="twitter:image" content="../../AN_Logo.png" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <link rel="canonical" href="https://deltabase.netlify.app/GHO" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../AN_Logo.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../../AN_Logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "منظومة GHO Press الرقمية لإدارة الأوردات وتتبع الإنتاج",
+    "description": "عرض فني ومالي متكامل لتطوير منظومة رقمية مغلقة ومخصصة بالكامل لمطبعة الغباشي — فرع أبو جمالة",
+    "author": {
+      "@type": "Organization",
+      "name": "A.N | Solutions"
+    },
+    "datePublished": "2026-06-18",
+    "dateModified": "2026-06-18",
+    "publisher": {
+      "@type": "Organization",
+      "name": "A.N | Solutions"
+    },
+    "inLanguage": "ar",
+    "url": "https://deltabase.netlify.app/GHO",
+    "image": "https://deltabase.netlify.app/AN_Logo.png",
+    "about": {
+      "@type": "Thing",
+      "name": "منظومة إدارة الأوامر وتتبع الإنتاج",
+      "description": "نظام MVP لمطبعة الغباشي يشمل موديول الأوامر الذكي، منظومة صلاحيات RBAC، عارض تصاميم متقدم، محرك تتبع الإنتاج، ومحرك تحليلات تنبؤي"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "25000",
+      "priceCurrency": "EGP",
+      "description": "صافي القيمة الاستثمارية للنظام المتكامل (MVP) بعد الخصم",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://deltabase.netlify.app/"},
+      {"@type": "ListItem", "position": 2, "name": "GHO Press", "item": "https://deltabase.netlify.app/GHO"}
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --paper: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #dce5f0;
+      --brand: #b91c1c;
+      --brand-strong: #7f1d1d;
+      --gold: #c58a11;
+      --teal: #0f766e;
+      --cmyk-c: #2563eb;
+      --cmyk-m: #e11d48;
+      --cmyk-y: #ca8a04;
+      --cmyk-k: #1e293b;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.75;
+    }
+
+    .container { width: min(1140px, 92vw); margin: 0 auto; }
+
+    /* ── Floating Orbs ── */
+    .orb {
+      position: fixed; pointer-events: none; z-index: -1;
+      border-radius: 999px; filter: blur(40px); opacity: 0.5;
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+    .orb-a { width: 400px; height: 400px; top: -120px; right: -100px; background: linear-gradient(140deg, #f87171, #fecaca); }
+    .orb-b { width: 320px; height: 320px; bottom: 6%; left: -100px; background: linear-gradient(140deg, #60a5fa, #bfdbfe); animation-delay: 1.5s; }
+    .orb-c { width: 220px; height: 220px; top: 50%; right: 4%; background: linear-gradient(140deg, #fbbf24, #fef08a); animation-duration: 17s; }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(28px, -22px) scale(1.08); }
+    }
+
+    /* ── Top Strip / Nav ── */
+    .top-strip {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(185, 28, 28, 0.12);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      position: sticky; top: 0; z-index: 50;
+    }
+    .top-strip .inner { display: flex; gap: 14px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; color: var(--brand-strong); }
+    .brand-mark { width: 40px; height: 40px; border-radius: 12px; background-image: url("../../AN_Logo.png"); background-size: cover; background-position: center; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+    .meta { color: var(--muted); font-size: 0.95rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .meta-pill { border: 1px solid rgba(185, 28, 28, 0.16); background: rgba(255, 255, 255, 0.68); padding: 6px 14px; border-radius: 999px; font-weight: 600; font-size: 0.85rem; }
+
+    /* ── Hero ── */
+    .hero {
+      margin: 40px 0 32px;
+      background: linear-gradient(160deg, #7f1d1d 0%, #991b1b 45%, #b91c1c 75%, #c2410c 100%);
+      color: #fef2f2;
+      border-radius: 28px;
+      padding: clamp(28px, 4vw, 48px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at 14% 28%, rgba(255,255,255,0.12) 0%, transparent 44%),
+                  radial-gradient(circle at 82% 72%, rgba(254,249,195,0.18) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 24px; position: relative; z-index: 1; align-items: end; }
+    .hero h1 { margin: 0 0 14px; font-size: clamp(1.8rem, 3.8vw, 2.8rem); line-height: 1.2; font-weight: 900; }
+    .hero p { margin: 0 0 14px; color: rgba(254, 242, 242, 0.9); font-size: 1.05rem; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.14); padding: 7px 14px;
+      font-size: 0.85rem; font-weight: 700; margin-bottom: 16px;
+      animation: pulse 2.8s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.22); }
+      75% { box-shadow: 0 0 0 11px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+    .hero-note {
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 18px;
+      background: rgba(0, 0, 0, 0.24); padding: 16px 18px;
+      font-size: 0.95rem; color: rgba(254, 242, 242, 0.95);
+    }
+    .hero-note strong { color: #fcd34d; }
+
+    /* ── Stats ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 18px 0 4px; }
+    .stat-card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 18px; padding: 16px 16px 14px;
+      box-shadow: 0 6px 22px rgba(15, 23, 42, 0.06);
+      position: relative; overflow: hidden;
+    }
+    .stat-card::after {
+      content: ""; position: absolute; top: 0; right: 0; width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--gold), var(--teal));
+      opacity: 0.92;
+    }
+    .stat-title { margin: 0; color: #334155; font-size: 0.86rem; font-weight: 700; }
+    .stat-value { margin-top: 8px; display: flex; align-items: flex-end; gap: 6px; flex-wrap: wrap; font-weight: 800; color: var(--brand-strong); line-height: 1; }
+    .stat-value strong { font-size: clamp(1.35rem, 2.2vw, 2rem); }
+    .stat-value span { font-size: 0.85rem; color: #334155; font-weight: 700; }
+
+    .strike-slant {
+      position: relative;
+      display: inline-block;
+    }
+    .strike-slant::after {
+      content: "";
+      position: absolute; top: 50%; left: -4px; right: -4px;
+      height: 2px;
+      background: rgba(185, 28, 28, 0.35);
+      transform: rotate(-8deg);
+      transform-origin: center;
+      pointer-events: none;
+    }
+
+    /* ── Sections ── */
+    .section { margin-top: 36px; }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .section-head h2 { margin: 0; font-size: clamp(1.4rem, 2.4vw, 2rem); color: var(--ink); line-height: 1.3; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 0.98rem; max-width: 600px; }
+
+    /* ── Problem Cards ── */
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .card-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+    .problem-card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 18px; padding: 18px; box-shadow: 0 12px 24px rgba(15,23,42,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .problem-card:hover { transform: translateY(-5px); box-shadow: 0 20px 34px rgba(15,23,42,0.11); }
+    .problem-card .icon-wrap {
+      width: 42px; height: 42px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px; font-size: 1.3rem;
+    }
+    .problem-card.bg-red .icon-wrap { background: #fef2f2; }
+    .problem-card.bg-amber .icon-wrap { background: #fffbeb; }
+    .problem-card.bg-blue .icon-wrap { background: #eff6ff; }
+    .problem-card.bg-purple .icon-wrap { background: #faf5ff; }
+    .problem-card.bg-green .icon-wrap { background: #f0fdf4; }
+    .problem-card.bg-orange .icon-wrap { background: #fff7ed; }
+    .problem-card.bg-gray .icon-wrap { background: #f8fafc; }
+
+    .problem-card h3 { margin: 0 0 8px; font-size: 1rem; color: #0f2a4e; }
+    .problem-card p { margin: 0; color: #475569; font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── Scope / Module Cards ── */
+    .scope-card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 18px; padding: 20px 20px 16px;
+      box-shadow: 0 12px 24px rgba(15,23,42,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .scope-card:hover { transform: translateY(-5px); box-shadow: 0 20px 34px rgba(15,23,42,0.11); }
+    .scope-card::before {
+      content: ""; position: absolute; right: 0; top: 0; width: 5px; height: 100%;
+      border-radius: 3px;
+    }
+    .scope-card.red::before { background: linear-gradient(180deg, #dc2626, #f87171); }
+    .scope-card.blue::before { background: linear-gradient(180deg, #2563eb, #60a5fa); }
+    .scope-card.green::before { background: linear-gradient(180deg, #16a34a, #4ade80); }
+    .scope-card.purple::before { background: linear-gradient(180deg, #9333ea, #c084fc); }
+    .scope-card.amber::before { background: linear-gradient(180deg, #d97706, #fbbf24); }
+    .scope-card.teal::before { background: linear-gradient(180deg, #0f766e, #2dd4bf); }
+
+    .scope-card h3 { margin: 0 0 10px; font-size: 1.05rem; color: #0f2a4e; display: flex; align-items: center; gap: 8px; }
+    .scope-card .card-icon { font-size: 1.5rem; }
+    .scope-list { margin: 0; padding: 0; list-style: none; }
+    .scope-list li { margin: 7px 0; padding-right: 20px; position: relative; color: #334155; font-size: 0.93rem; }
+    .scope-list li::before {
+      content: ""; position: absolute; right: 0; top: 8px; width: 10px; height: 10px;
+      border-radius: 50%; background: linear-gradient(150deg, var(--brand), var(--cmyk-c));
+      box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.1);
+    }
+
+    /* ── Tech Box ── */
+    .tech-box {
+      background: linear-gradient(170deg, #fff, #f5f9ff);
+      border: 1px solid #ceddee; border-radius: 20px;
+      padding: 24px; box-shadow: 0 14px 34px rgba(15,23,42,0.09);
+    }
+    .tech-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+    .tech-item { text-align: center; padding: 16px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+    .tech-item .tech-icon { font-size: 2rem; margin-bottom: 8px; }
+    .tech-item h4 { margin: 0 0 4px; font-size: 0.95rem; color: var(--ink); }
+    .tech-item p { margin: 0; color: var(--muted); font-size: 0.82rem; }
+
+    /* ── Financial ── */
+    .financial-box {
+      background: linear-gradient(170deg, #fff, #f5f9ff);
+      border: 1px solid #ceddee; border-radius: 20px;
+      padding: 24px; box-shadow: 0 14px 34px rgba(15,23,42,0.09);
+    }
+    .financial-highlight {
+      background: var(--brand-strong); color: #fef2f2;
+      border-radius: 18px; padding: 24px; margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .financial-highlight::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .financial-highlight .big { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1; margin-bottom: 4px; position: relative; z-index: 1; }
+    .financial-highlight .sub { position: relative; z-index: 1; opacity: 0.85; }
+    .financial-highlight .discount { background: rgba(251, 191, 36, 0.2); color: #fcd34d; padding: 2px 10px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-top: 8px; }
+
+    .payment-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 16px; }
+    .payment-card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 16px; padding: 16px;
+      box-shadow: 0 6px 22px rgba(15,23,42,0.06);
+      position: relative;
+    }
+    .payment-card .step { color: var(--brand); font-weight: 800; font-size: 0.8rem; }
+    .payment-card h4 { margin: 4px 0; font-size: 0.95rem; }
+    .payment-card .amount { font-weight: 800; color: var(--brand-strong); font-size: 1.2rem; }
+    .payment-card .note { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+    .payment-card .percent { position: absolute; top: 12px; left: 12px; background: var(--brand); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+
+    /* ── CTA ── */
+    .cta {
+      margin: 36px 0 40px; border-radius: 24px;
+      border: 1px solid #e5d0d0;
+      background: linear-gradient(130deg, rgba(185, 28, 28, 0.08), rgba(37, 99, 235, 0.08)), #ffffff;
+      padding: 28px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(120deg, transparent 0%, transparent 15%, rgba(255,255,255,0.8) 50%, transparent 85%, transparent 100%);
+      background-size: 200% 100%;
+      animation: shimmer 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .cta h2 { margin: 0 0 8px; position: relative; z-index: 1; color: var(--brand-strong); }
+    .cta p { margin: 0; position: relative; z-index: 1; color: #334155; font-weight: 600; }
+
+    /* ── Footer ── */
+    footer { text-align: center; margin-bottom: 26px; color: #64748b; font-size: 0.9rem; }
+
+    /* ── Reveal Animations ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.62s ease, transform 0.62s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .card-3col { grid-template-columns: 1fr 1fr; }
+      .tech-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 760px) {
+      .card-grid, .card-3col, .tech-grid, .payment-grid, .stats-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+
+  <header class="top-strip" aria-label="القائمة العلوية">
+    <div class="container inner">
+      <div class="brand">
+        <span class="brand-mark" role="img" aria-label="شعار A.N | Solutions"></span>
+        <span>A.N | Solutions</span>
+      </div>
+      <div class="meta">
+        <span class="meta-pill">GHO Press</span>
+        <span class="meta-pill">إلى: إدارة مطبعة الغباشي</span>
+        <span class="meta-pill" id="liveDate"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero reveal" aria-label="القسم التعريفي للمشروع">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-badge">عرض فني ومالي رسمي — قابل للتعاقد</span>
+          <h1>منظومة GHO Press الرقمية<br>لإدارة الأوردرات وتتبع الإنتاج</h1>
+          <p>
+            حل رقمي مخصص بالكامل (Custom-Built MVP) لمطبعة الغباشي — فرع أبو جمالة —
+            يحوّل بيئة العمل المليئة بالتوتر إلى منظومة انسيابية ذكية تقضي على النزيف التشغيلي
+            وتضع الإدارة على لوحة تحكم مركزية لا تخطئ.
+          </p>
+        </div>
+        <div class="hero-note">
+          <strong>خلاصة تنفيذية:</strong><br />
+          النظام مبني على 5 موديولات هندسية: موديول الأوامر الذكي، منظومة صلاحيات صارمة،
+          عارض تصاميم متقدم، محرك تتبع الإنتاج، ومحرك تحليلات تنبؤي — مع بنية تقنية
+          <strong>Go + PostgreSQL + Vue 3</strong> لضمان أقصى أداء وأمان.
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ STATS ═══ -->
+    <section class="stats-grid">
+      <article class="stat-card reveal">
+        <p class="stat-title">القيمة العادلة للنظام</p>
+        <div class="stat-value"><strong class="strike-slant">26,500</strong><span>ج.م</span></div>
+        <p style="margin:4px 0 0;font-size:0.78rem;color:#b91c1c;font-weight:700;">قبل الخصم</p>
+      </article>
+      <article class="stat-card reveal">
+        <p class="stat-title">بعد الخصم</p>
+        <div class="stat-value"><strong>25,000</strong><span>ج.م</span></div>
+        <p style="margin:4px 0 0;font-size:0.78rem;color:#16a34a;font-weight:700;">توفير 1,500 ج.م</p>
+      </article>
+      <article class="stat-card reveal">
+        <p class="stat-title">عدد الموديولات</p>
+        <div class="stat-value"><strong>5</strong><span>موديولات</span></div>
+        <p style="margin:4px 0 0;font-size:0.78rem;color:#64748b;">أوامر + صلاحيات + عارض + تتبع + تحليلات</p>
+      </article>
+      <article class="stat-card reveal">
+        <p class="stat-title">دفعات التعاقد</p>
+        <div class="stat-value"><strong>3</strong><span>دفعات</span></div>
+        <p style="margin:4px 0 0;font-size:0.78rem;color:#64748b;">مرتبطة بتسليمات مرحلية</p>
+      </article>
+    </section>
+
+    <!-- ═══ PROBLEMS (PAIN POINTS) ═══ -->
+    <section class="section" aria-label="التحديات التشغيلية">
+      <div class="section-head reveal">
+        <h2>التحديات التشغيلية الراهنة</h2>
+        <p>7 أزمات تشغيلية تم رصدها ميدانياً داخل فرع أبو جمالة — تمثل عنق الزجاجة الحقيقي</p>
+      </div>
+      <div class="card-grid" role="list">
+        <article class="problem-card bg-red reveal" role="listitem">
+          <div class="icon-wrap">🚶</div>
+          <h3>دورة المتابعة المنهكة</h3>
+          <p>الاضطرار للنزول الميداني بين الماكينات وسؤال العمال يدوياً لمعرفة أين وصل الأمر — معلومات شفهية تقديرية تضلل القرار.</p>
+        </article>
+        <article class="problem-card bg-amber reveal" role="listitem">
+          <div class="icon-wrap">🗄️</div>
+          <h3>كابوس فوضى الأرشيف</h3>
+          <p>صعوبة استدعاء أوامر التشغيل القديمة — الاعتماد على ذاكرة المصمم والعمال وهاردات ممتلئة عشوائياً وبرامج غير مخصصة.</p>
+        </article>
+        <article class="problem-card bg-blue reveal" role="listitem">
+          <div class="icon-wrap">📄</div>
+          <h3>الاعتماد على السجلات التقليدية</h3>
+          <p>الأوراق، الدفاتر، وملفات Word/Excel المنفصلة — قنبلة موقوتة تهدد بضياع حقوق المطبعة وتاريخها التشغيلي.</p>
+        </article>
+        <article class="problem-card bg-purple reveal" role="listitem">
+          <div class="icon-wrap">🙈</div>
+          <h3>انكشاف الثغرة المالية</h3>
+          <p>ظهور أسعار الأوردرات وهامش الربح لكافة المستخدمين دون قيود — تهديد أمني مباشر يسهل على المنافسين اقتناص العملاء.</p>
+        </article>
+        <article class="problem-card bg-orange reveal" role="listitem">
+          <div class="icon-wrap">🖨️</div>
+          <h3>ارتهان خط الإنتاج بالمصمم</h3>
+          <p>توقف المكابس عند وجود استفسار فني عن التصميم — انتظار المصمم يعطل ساعات الإنتاج ويحوله لنقطة اختناق حادة.</p>
+        </article>
+        <article class="problem-card bg-green reveal" role="listitem">
+          <div class="icon-wrap">📏</div>
+          <h3>النزيف المالي في حساب الخام</h3>
+          <p>الحسابات اليدوية التقديرية للأفرخ — إما هدر في مواد خام أو نقص في الكمية المسلمة وإعادة تجهيز الماكينات من الصفر.</p>
+        </article>
+        <article class="problem-card bg-gray reveal" role="listitem" style="grid-column: span 1;">
+          <div class="icon-wrap">🕐</div>
+          <h3>غياب التنبؤ بمواعيد التسليم</h3>
+          <p>صدمات التأخير المتكررة — لا قدرة على إبلاغ العميل بموعد دقيق، والاعتماد على تقديرات العمال الخائفة من العقاب.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══ MODULES ═══ -->
+    <section class="section" aria-label="موديولات النظام">
+      <div class="section-head reveal">
+        <h2>الحلول الرقمية — نطاق العمل (5 موديولات)</h2>
+        <p>هندسة برمجية متكاملة تقضي على المشاكل التشغيلية خطوة بخطوة</p>
+      </div>
+
+      <div class="card-3col" role="list">
+        <article class="scope-card red reveal" role="listitem">
+          <h3><span class="card-icon">📋</span> موديول الأوردرات الذكي</h3>
+          <ul class="scope-list">
+            <li>أبعاد 3D دقيقة (الطول × العرض × الارتفاع) كأرقام عشرية.</li>
+            <li>معادلات إفراد الفرخ 2D ومقاس السكينة مع هوامش الأمان.</li>
+            <li>حساب تلقائي لكمية الأفرخ — <strong>QtySheet = QtyUnit ÷ UnitsPerSheet</strong>.</li>
+            <li>توليد تلقائي لأكواد الأصناف بدمج رقم العميل + رقم الصنف.</li>
+            <li>التحقق الصارم من البيانات (Validation Tags) لمنع الأخطاء.</li>
+          </ul>
+        </article>
+        <article class="scope-card blue reveal" role="listitem">
+          <h3><span class="card-icon">🛡️</span> منظومة الصلاحيات الصارمة (RBAC)</h3>
+          <ul class="scope-list">
+            <li><strong>Owner:</strong> صلاحيات مطلقة — يرى ويعدل الأسعار، وله تحكم كامل في تفعيل/قفل أي صلاحية لأي حساب.</li>
+            <li><strong>Manager:</strong> تُحجب عنه الأسعار افتراضياً (قابل للتفعيل من الـ Owner).</li>
+            <li><strong>Supervisor (مشرف):</strong> قراءة فقط — يتابع الأوردرات يُحدّث نسبة التقدم، ويطبع قوالب التشغيل.</li>
+            <li><strong>Data Entry:</strong> حقل السعر مخفي تماماً من الرؤية والإدخال.</li>
+            <li>نظام صلاحيات متقدم ومرن — الـ Owner يحدد بدقة من يرى ويرى ماذا ومن يدخل وماذا يستطيع ان يدخل (صلاحيات مجزأة لكل حساب على حدى).</li>
+            <li>إشعار لحظي للمالك عند حفظ أمر بدون سعر لتحديده فوراً.</li>
+            <li>تصفية الحقل المالي من JSON قبل وصوله للمتصفح — حماية لا تُخرق.</li>
+          </ul>
+        </article>
+        <article class="scope-card green reveal" role="listitem">
+          <h3><span class="card-icon">🔍</span> عارض التصاميم المتقدم</h3>
+          <ul class="scope-list">
+            <li>مستودع رقمي ذكي لأرشفة ملفات التصاميم (Di-Cut).</li>
+            <li>عارض تفاعلي للتكبير العميق (Deep Zoom) وفحص الخطوط.</li>
+            <li>تحريك محوري (Pan) للتنقل داخل الفرخ بحرية.</li>
+            <li>إنهاء الحاجة لاستدعاء المصمم — استمرار دوران المكابس بوعي.</li>
+            <li>مراجعة هوامش الأمان بشكل مستقل تماماً.</li>
+          </ul>
+        </article>
+        <article class="scope-card purple reveal" role="listitem">
+          <h3><span class="card-icon">📊</span> محرك تتبع الإنتاج والتسجيل التاريخي</h3>
+          <ul class="scope-list">
+            <li>مسار ديناميكي (تحت التجهيز → قيد التنفيذ → منتهي).</li>
+            <li>تخطي المراحل الاختيارية غير المحددة في الأمر تلقائياً.</li>
+            <li>المشرف يُحدّث نسبة التقدم (0-100%) لكل مرحلة (طباعة، لصق، قص…).</li>
+            <li>توثيق تاريخي صارم — اسم المشرف + الطابع الزمني بالثانية.</li>
+            <li>المشرف يطبع قالب التشغيل الخاص بالأمر مباشرة من النظام.</li>
+            <li>تقرير رقابي لأداء كل طابق وعامل.</li>
+          </ul>
+        </article>
+        <article class="scope-card amber reveal" role="listitem">
+          <h3><span class="card-icon">📈</span> محرك التحليلات الذكي والتنبؤ الزمني</h3>
+          <ul class="scope-list">
+            <li>تحديد موقع الأمر الحالي والمرحلة النشطة برمجياً.</li>
+            <li>حساب معدل السرعة التشغيلية (Velocity).</li>
+            <li>التنبؤ بتاريخ التسليم <strong>Expected Finish Date</strong>.</li>
+            <li>إضاءة تحذيرية عند التأخير مع مقدار التأخير بالساعات.</li>
+            <li>تدابير استباقية فورية — إبلاغ العميل بموعد دقيق.</li>
+          </ul>
+        </article>
+        <article class="scope-card teal reveal" role="listitem">
+          <h3><span class="card-icon">⚙️</span> تحضير الإنتاج الذكي</h3>
+          <ul class="scope-list">
+            <li>تهيئة الأحبار والزنكات (جديدة / موجودة / مع تعديل).</li>
+            <li>إدارة الأكلاشيهات (بصمة، كفراج، فيلم سبوت) بـ Multi-select.</li>
+            <li>تسجيل الإسطمبات برقم فردي (ID) مع إضافة سريعة.</li>
+            <li>حقول اللصق المشروطة (عدد بنط + أوتوماتيك / يدوي).</li>
+            <li>تكامل تام مع مراحل الإنتاج اللاحقة.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══ TECH STACK ═══ -->
+    <section class="section" aria-label="البنية التقنية">
+      <div class="section-head reveal">
+        <h2>البنية التقنية والهندسية</h2>
+        <p>أحدث التقنيات لضمان أقصى سرعة وأمان واستدامة للنظام</p>
+      </div>
+      <div class="tech-box reveal">
+        <div class="tech-grid">
+          <div class="tech-item">
+            <div class="tech-icon">⚡</div>
+            <h4>Go + Fiber</h4>
+            <p>أداء فائق في المعالجة المتزامنة للتحديثات بلا بطء, وخفة فى التشغيل حتى على السيرفرات الضعيفه, مراعاتاً لتقليل التكلفة التشغيلية قدر المستطاع</p>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">🗄️</div>
+            <h4>PostgreSQL</h4>
+            <p>قاعدة بيانات آمنه وحديثة جداً لأعلى سرعة وأمان واتساق للمعاملات مع ACID Compliance</p>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">🖥️</div>
+            <h4>Vue 3 + Pinia</h4>
+            <p>لواجهة تفاعلية خفيفة وسريعة مع Composition API وإدارة حالة موحدة</p>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">🎨</div>
+            <h4>Tailwind CSS RTL</h4>
+            <p>لواجهة مخصصة جميلة و متجاوبة تعمل على كل الشاشات (mobile, tablet, desktop) عربية بالكامل — تجربة مريحة وسريعة</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ROI ═══ -->
+    <section class="section" aria-label="العائد على الاستثمار">
+      <div class="section-head reveal">
+        <h2>العائد على الاستثمار (ROI)</h2>
+        <p>النظام لا يمثل تكلفة — بل استثمار في رفع الربحية والإنتاجية وتقليل الإهدار وتحسين السمعة بين العملاء فهو استثمار طويل الامد دفع مره واحدة وعائدة مستمر سواء بتقليل خسائر او عميل راضى &hearts;</p>
+      </div>
+      <div class="card-3col">
+        <article class="scope-card red reveal" style="text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:8px;">📉</div>
+          <h3 style="justify-content:center;">منع الهدر المادي</h3>
+          <p style="color:#475569;font-size:0.9rem;">الحساب الدقيق للأفرخ يمنع هدر الخامات وإعادة تشغيل الزنكات — توفير مباشر في المواد الخام.</p>
+        </article>
+        <article class="scope-card blue reveal" style="text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:8px;">⏱️</div>
+          <h3 style="justify-content:center;">استغلال الوقت المهدر</h3>
+          <p style="color:#475569;font-size:0.9rem;">عارض التصاميم التفاعلي يختصر ساعات الانتظار والاستفسار اليومي في الطوابق, او الاسوأ تعطل العمل حتى يأتى الرد!</p>
+        </article>
+        <article class="scope-card green reveal" style="text-align:center;">
+          <div style="font-size:2.5rem;margin-bottom:8px;">🏆</div>
+          <h3 style="justify-content:center;">حماية السمعة التجارية</h3>
+          <p style="color:#475569;font-size:0.9rem;">محرك التنبؤ الزمني يحمي المطبعة من الإخلال بمواعيد كبار العملاء ويمنحها هيبة تنظيمية.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══ FINANCIAL ═══ -->
+    <section class="section" aria-label="العرض المالي">
+      <div class="section-head reveal">
+        <h2>العرض المالي وجدول الدفعات</h2>
+        <p>سعر عادل لنظام مخصص بالكامل — مع خصم خاص لمطبعة الغباشي</p>
+      </div>
+
+      <div class="financial-box reveal">
+        <div class="financial-highlight">
+          <div class="big">25,000 ج.م</div>
+          <div class="sub">صافي القيمة الاستثمارية للنظام المتكامل (MVP)</div>
+          <div class="discount">توفير 1,500 ج.م</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+          <div style="background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;">
+            <p style="margin:0;color:#64748b;font-size:0.85rem;font-weight:700;">القيمة العادلة للنظام</p>
+            <p style="margin:4px 0 0;font-size:1.5rem;color:var(--brand-strong);font-weight:800;">26,500 ج.م</p>
+            <p style="margin:2px 0 0;font-size:0.78rem;color:#64748b;">قبل الخصم — بناءً على التعقيد الهندسي والتسعير العادل للمطورين فى السوق المصرى حالياً</p>
+          </div>
+          <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:14px;padding:14px;">
+            <p style="margin:0;color:#b91c1c;font-size:0.85rem;font-weight:700;">قيمة الخصم</p>
+            <p style="margin:4px 0 0;font-size:1.5rem;color:#b91c1c;font-weight:800;">1,500 ج.م</p>
+            <p style="margin:2px 0 0;font-size:0.78rem;color:#dc2626;">خصم خاص لمطبعة الغباشي دعماً واستيعاباً للمرحلة الحالية، ومعروفاً لسابق المعرفة &hearts;</p>
+          </div>
+        </div>
+
+        <h3 style="margin:0 0 12px;font-size:1.1rem;color:#0f2a4e;">جدول الدفعات المقترح</h3>
+        <div class="payment-grid">
+          <div class="payment-card reveal">
+            <span class="percent">35%</span>
+            <div class="step">الدفعة الأولى</div>
+            <h4>مقدم التعاقد</h4>
+            <div class="amount">8,750 ج.م</div>
+            <div class="note">عند توقيع العرض وبدء هندسة الواجهات وقاعدة البيانات</div>
+          </div>
+          <div class="payment-card reveal">
+            <span class="percent" style="background:var(--cmyk-c);">40%</span>
+            <div class="step">الدفعة الثانية</div>
+            <h4>التسليم المرحلي</h4>
+            <div class="amount">10,000 ج.م</div>
+            <div class="note">عند تسليم موديول الأوردرات والمواصفات وتفعيل عارض التصاميم</div>
+          </div>
+          <div class="payment-card reveal">
+            <span class="percent" style="background:#16a34a;">25%</span>
+            <div class="step">الدفعة الثالثة</div>
+            <h4>التسليم النهائي</h4>
+            <div class="amount">6,250 ج.م</div>
+            <div class="note">بعد ربط محرك التحليلات والتنبؤ الزمني وإطلاق النظام كاملاً</div>
+          </div>
+        </div>
+
+        <p style="margin:16px 0 0;font-size:0.85rem;color:#64748b;border-top:1px solid var(--line);padding-top:14px;">
+          ⓘ هذا السعر يغطي نطاق MVP المذكور بالكامل. أي ميزات إضافية مستقبلية تخضع لملحق مالي منفصل.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ NEXT STEPS ═══ -->
+    <section class="cta reveal" aria-label="الخطوات التالية">
+      <h2>الخطوات التالية — من العرض إلى التشغيل</h2>
+      <p>
+        1. اعتماد هذا العرض واتخاذ قرار البدء.<br />
+        2. توقيع العقد الرسمي وتحديد جدول التسليم النهائي.<br />
+        3. بدء تنفيذ النظام وتحويل الفكره والحلول للمشاكل الحاليه كلها الى واقع — الانتقال من العصر والورقى والتقنيات الغبية إلى عصر الإدارة الرقمية المخصصة للهدف والمشاكل الحالية.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 GHO Press | مطبعة الغباشي للطباعة والتغليف — إعداد وتطوير A.N | Solutions
+  </footer>
+
+  <script>
+    document.getElementById('liveDate').textContent = new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long' });
+
+    const revealElements = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach((el, idx) => {
+      el.style.transitionDelay = `${Math.min(idx * 50, 240)}ms`;
+      revealObserver.observe(el);
+    });
+  </script>
+</body>
+</html>

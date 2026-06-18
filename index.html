@@ -14,9 +14,56 @@
     <meta property="og:description" content="استكشف مستقبل مشاريعك البرمجية مع عروض DeltaBase التنفيذية." />
     <meta property="og:image" content="DeltaBase_Logo.png" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/dist/output.css" />
+    <meta property="og:url" content="https://deltabase.netlify.app/" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:site_name" content="DeltaBase Presentations" />
+    <meta name="twitter:site" content="@DeltaBase" />
+    <meta name="twitter:creator" content="@DeltaBase" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <link rel="canonical" href="https://deltabase.netlify.app/" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="dist/output.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "DeltaBase Presentations",
+      "alternateName": "منصة العروض التقديمية لـ DeltaBase",
+      "url": "https://deltabase.netlify.app/",
+      "description": "منصة DeltaBase لعرض المشاريع البرمجية - منصة استضافة العروض التقديمية للعملاء",
+      "inLanguage": "ar",
+      "author": {
+        "@type": "Organization",
+        "name": "DeltaBase Software",
+        "url": "https://deltabase.netlify.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://deltabase.netlify.app/DeltaBase_Logo.png"
+        }
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "منصة استعراض المشاريع البرمجية",
+      "description": "مساحة مخصصة لعملاء DeltaBase لاستكشاف الأنظمة، مراجعة خطط العمل، بأعلى معايير الشفافية التقنية.",
+      "url": "https://deltabase.netlify.app/",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "url": "https://deltabase.netlify.app/Buildaxis", "name": "مشروع Buildaxis"},
+          {"@type": "ListItem", "position": 2, "url": "https://deltabase.netlify.app/CanteenSystem", "name": "نظام إدارة الكانتين والفروع"},
+          {"@type": "ListItem", "position": 3, "url": "https://deltabase.netlify.app/QuantixPro", "name": "QuantixPro — نظام إدارة متكامل لمحلات البيع بالجملة"},
+          {"@type": "ListItem", "position": 4, "url": "https://deltabase.netlify.app/GHO", "name": "GHO Press — منظومة إدارة الأوامر وتتبع الإنتاج"}
+        ]
+      }
+    }
+    </script>
 
     <style>
         :root {
@@ -26,7 +73,7 @@
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
             background-color: var(--bg-dark);
             color: #f8fafc;
             overflow-x: hidden;
@@ -87,20 +134,28 @@
 <body>
     <div class="glow-bg"></div>
 
-    <nav class="sticky top-0 z-50 glass-card border-b border-white/5 py-4 px-6">
+    <nav class="sticky top-0 z-50 glass-card border-b border-white/5 py-4 px-6" aria-label="القائمة الرئيسية">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="DeltaBase_Logo.png" alt="DeltaBase Logo" class="w-10 h-10 object-contain" />
-                <span class="text-xl font-black tracking-tighter text-white">DELTA<span class="text-blue-500">BASE</span></span>
+                <img src="DeltaBase_Logo.png" alt="شعار DeltaBase Software" class="w-10 h-10 object-contain" width="40" height="40" />
+                <span class="text-xl font-black tracking-tighter text-white" aria-label="DeltaBase">DELTA<span class="text-blue-500">BASE</span></span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400" id="nav-links">
-                <button data-nav="home" class="hover:text-blue-400 transition-colors">الرئيسية</button>
-                <button data-nav="projects" class="hover:text-blue-400 transition-colors">المشاريع</button>
+                <button data-nav="home" class="hover:text-blue-400 transition-colors" aria-label="الانتقال إلى الرئيسية">الرئيسية</button>
+                <button data-nav="projects" class="hover:text-blue-400 transition-colors" aria-label="الانتقال إلى المشاريع">المشاريع</button>
             </div>
         </div>
     </nav>
 
-    <header class="relative pt-20 pb-32 px-6 overflow-hidden">
+    <nav aria-label="مسار التنقل" class="max-w-7xl mx-auto px-6 pt-4">
+        <ol class="flex items-center gap-2 text-xs text-slate-500">
+            <li><a href="/" class="hover:text-blue-400 transition-colors">الرئيسية</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="text-slate-400" aria-current="page">المشاريع المتاحة</li>
+        </ol>
+    </nav>
+
+    <header class="relative pt-20 pb-32 px-6 overflow-hidden" aria-label="القسم التعريفي">
         <div class="max-w-4xl mx-auto text-center relative z-10 min-h-max">
             <h1 class="text-5xl md:text-7xl font-black mb-6 text-gradient leading-tight">
                 نعيد تعريف عرض <br/> <span class="text-blue-500">الحلول البرمجية</span>
@@ -119,40 +174,39 @@
         </div>
     </header>
 
-    <main id="projects" class="max-w-7xl mx-auto px-6 pb-32">
+    <main id="projects" class="max-w-7xl mx-auto px-6 pb-32" aria-label="قائمة المشاريع المتاحة">
         <div class="flex items-center justify-between mb-12">
             <div>
                 <h2 class="text-2xl font-bold flex items-center gap-3">
-                    <i data-lucide="layers" class="text-blue-500"></i>
+                    <i data-lucide="layers" class="text-blue-500" aria-hidden="true"></i>
                     المشاريع المتاحة
                 </h2>
                 <p class="text-slate-500 text-sm mt-1">يتم تحديث القائمة تلقائياً بناءً على آخر العروض</p>
             </div>
         </div>
 
-        <div id="presentations-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="glass-card rounded-3xl p-8 h-80 loading-shimmer"></div>
-            <div class="glass-card rounded-3xl p-8 h-80 loading-shimmer"></div>
-            <div class="glass-card rounded-3xl p-8 h-80 loading-shimmer"></div>
+        <div id="presentations-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+            <div class="glass-card rounded-3xl p-8 h-80 loading-shimmer" role="listitem" aria-label="تحميل"></div>
+            <div class="glass-card rounded-3xl p-8 h-80 loading-shimmer" role="listitem" aria-label="تحميل"></div>
+            <div class="glass-card rounded-3xl p-8 h-80 loading-shimmer" role="listitem" aria-label="تحميل"></div>
         </div>
     </main>
 
-    <footer class="border-t border-white/5 py-8 px-6 bg-black/20">
+    <footer class="border-t border-white/5 py-8 px-6 bg-black/20" aria-label="تذييل الصفحة">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-right">
-            <div>
+            <div itemscope itemtype="https://schema.org/Organization">
                 <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
-                    <img src="DeltaBase_Logo.png" alt="DeltaBase" class="w-8 h-8 opacity-50" />
-                    <span class="font-bold text-slate-500">DeltaBase Software</span>
+                    <img src="DeltaBase_Logo.png" alt="شعار DeltaBase Software" class="w-8 h-8 opacity-50" width="32" height="32" />
+                    <span class="font-bold text-slate-500" itemprop="name">DeltaBase Software</span>
                 </div>
+                <meta itemprop="url" content="https://deltabase.netlify.app/" />
             </div>
             <p class="text-slate-600 text-xs">نظام إدارة العروض التقديمية - الإصدار التنفيذي 2026</p>
-            <!-- <div class="flex gap-6 text-slate-500 text-sm">
-                <a href="#" class="hover:text-white transition-colors">سياسة الخصوصية</a>
-                <a href="#" class="hover:text-white transition-colors">الدعم التقني</a>
-            </div> -->
             <p class="text-slate-600 text-xs font-mono">© 2026 DeltaBase. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script id="presentations-data" type="application/json">{"presentations":[{"id":"Buildaxis","title":"مشروع Buildaxis","description":"العرض التنفيذي لمشروع Buildaxis - نظام إدارة المشاريع والمقاولات","thumbnail":"DeltaBase_Logo.png","path":"presentations/Buildaxis/index.html","roadmap":"presentations/Buildaxis/roadmap.html","tags":["إدارة المشاريع","مقاولات","برمجة"],"createdAt":"2025-01-15","status":"pending"},{"id":"CanteenSystem","title":"نظام إدارة الكانتين والفروع","description":"نظام ويب متكامل لإدارة المخزون الرئيسي والفروع، ومتابعة توزيع البضائع، وتحصيل الأموال، ومراقبة الأداء المالي لكل فرع بشكل واضح ومنظم.","thumbnail":"DeltaBase_Logo.png","path":"presentations/CanteenSystem/index.html","roadmap":null,"tags":["إدارة المخزون","الفروع","الكانتين","تحصيل مالي"],"createdAt":"2025-03-30","status":"pending"},{"id":"QuantixPro","title":"QuantixPro — نظام إدارة متكامل لمحلات البيع بالجملة","description":"نظام متكامل يعمل بدون إنترنت لإدارة محلات البيع بالجملة — نقاط البيع (POS) مع الباركود والطباعة الحرارية، إدارة المخزون بنظام دفعات FIFO، فواتير البيع النقدي والآجل، حسابات العملاء والموردين، الموارد البشرية والرواتب، التقارير المالية المقارنة، والأمان مع سجل أحداث ونسخ احتياطي موقّع.","thumbnail":"presentations/QuantixPro/assets/logo-icon.png","path":"presentations/QuantixPro/index.html","roadmap":null,"tags":["نقاط البيع","المخزون","فواتير","عملاء","موردين","موارد بشرية","تقارير مالية","أمان"],"createdAt":"2026-05-11","status":"active"},{"id":"GHO","title":"GHO Press — منظومة إدارة الأوامر وتتبع الإنتاج","description":"منظومة رقمية مغلقة ومخصصة بالكامل لمطبعة الغباشي (فرع أبو جمالة) لإدارة الأوامر وتتبع الإنتاج — تشمل موديول الأوامر الذكي مع أبعاد 3D وحساب الأفرخ التلقائي، منظومة صلاحيات صارمة لحجب الأسعار (RBAC)، عارض تصاميم تفاعلي (Deep Zoom + Pan)، محرك تتبع مراحل الإنتاج مع Audit Trail، ومحرك تحليلات تنبؤي لتوقع مواعيد التسليم.","thumbnail":"DeltaBase_Logo.png","path":"presentations/GHO/index.html","roadmap":null,"tags":["مطابع","إدارة الأوامر","تتبع الإنتاج","صلاحيات","عارض تصاميم","تحليلات"],"createdAt":"2026-06-18","status":"active"}],"config":{"siteName":"DeltaBase Presentations","siteDescription":"منصة العروض التقديمية لـ DeltaBase","logo":"DeltaBase_Logo.png","favicon":"DeltaBase_Logo.ico"}}</script>
 
     <script>
         // تهيئة الأيقونات
@@ -160,19 +214,22 @@
 
         let allProjects = [];
 
-        async function loadPresentations() {
+        function loadPresentations() {
             const container = document.getElementById("presentations-container");
+            const inlineData = document.getElementById("presentations-data");
             
             try {
-                const response = await fetch("presentations.json");
-                const data = await response.json();
-                allProjects = data.presentations || [];
-                renderProjects(allProjects);
+                if (inlineData) {
+                    const data = JSON.parse(inlineData.textContent);
+                    allProjects = data.presentations || [];
+                    renderProjects(allProjects);
+                    generateProjectJSONLD(allProjects);
+                }
             } catch (error) {
                 container.innerHTML = `
                     <div class="col-span-full py-20 text-center glass-card rounded-3xl border-red-500/20">
                         <i data-lucide="alert-circle" class="w-12 h-12 text-red-500 mx-auto mb-4"></i>
-                        <p class="text-red-400">فشل تحميل البيانات. يرجى التأكد من ملف JSON.</p>
+                        <p class="text-red-400">فشل تحميل البيانات.</p>
                     </div>
                 `;
                 lucide.createIcons();
@@ -188,38 +245,40 @@
             }
 
             container.innerHTML = projects.map(p => `
-                <div class="glass-card rounded-3xl p-8 flex flex-col group">
+                <article class="glass-card rounded-3xl p-8 flex flex-col group" role="listitem" itemscope itemtype="https://schema.org/SoftwareApplication">
                     <div class="flex justify-between items-start mb-6">
                         <div class="p-3 bg-white/5 rounded-2xl group-hover:bg-blue-500/10 transition-colors">
-                            <img src="${p.thumbnail}" alt="${p.title}" class="w-12 h-12 object-contain" />
+                            <img src="${p.thumbnail}" alt="${p.title}" class="w-12 h-12 object-contain" width="48" height="48" loading="lazy" />
                         </div>
-                        <span class="status-badge ${getStatusClass(p.status)}">
+                        <span class="status-badge ${getStatusClass(p.status)}" itemprop="applicationCategory">
                             ${translateStatus(p.status)}
                         </span>
                     </div>
                     
-                    <h3 class="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">${p.title}</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                    <h3 class="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors" itemprop="name">${p.title}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow line-clamp-3" itemprop="description">
                         ${p.description}
                     </p>
                     
-                    <div class="flex flex-wrap gap-2 mb-8">
+                    <div class="flex flex-wrap gap-2 mb-8" itemprop="keywords">
                         ${p.tags.map(tag => `<span class="text-[10px] bg-white/5 text-slate-400 px-2 py-1 rounded-md border border-white/5">${tag}</span>`).join('')}
                     </div>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-auto">
-                        <a href="${p.path}" class="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl text-sm font-bold transition-all">
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <a href="${p.path}" class="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl text-sm font-bold transition-all" aria-label="فتح عرض ${p.title}">
+                            <i data-lucide="external-link" class="w-4 h-4" aria-hidden="true"></i>
                             فتح العرض
                         </a>
                         ${p.roadmap ? `
-                            <a href="${p.roadmap}" class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl text-sm font-bold transition-all">
-                                <i data-lucide="map" class="w-4 h-4"></i>
+                            <a href="${p.roadmap}" class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl text-sm font-bold transition-all" aria-label="خارطة طريق ${p.title}">
+                                <i data-lucide="map" class="w-4 h-4" aria-hidden="true"></i>
                                 خارطة الطريق
                             </a>
                         ` : ''}
                     </div>
-                </div>
+                    <meta itemprop="url" content="https://deltabase.netlify.app/${p.id}" />
+                    <meta itemprop="dateCreated" content="${p.createdAt}" />
+                </article>
             `).join('');
             
             lucide.createIcons();
@@ -236,6 +295,25 @@
         function translateStatus(status) {
             const map = { 'active': 'نشط', 'pending': 'قيد المراجعة', 'draft': 'مسودة' };
             return map[status] || status;
+        }
+
+        // إنشاء JSON-LD ديناميكي لكل مشروع (GEO)
+        function generateProjectJSONLD(projects) {
+            const items = projects.map((p, i) => ({
+                "@type": "ListItem",
+                "position": i + 1,
+                "url": `https://deltabase.netlify.app/${p.id}`,
+                "name": p.title,
+                "description": p.description
+            }));
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "itemListElement": items
+            });
+            document.head.appendChild(script);
         }
 
         // البحث التفاعلي

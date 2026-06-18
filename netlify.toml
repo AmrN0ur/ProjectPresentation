@@ -22,6 +22,16 @@
   to = "/presentations/CanteenSystem/:splat"
   status = 200
 
+[[redirects]]
+  from = "/GHO"
+  to = "/presentations/GHO/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/GHO/*"
+  to = "/presentations/GHO/:splat"
+  status = 200
+
 # 404 fallback
 [[redirects]]
   from = "/*"
